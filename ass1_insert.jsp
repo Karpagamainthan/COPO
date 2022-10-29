@@ -9,6 +9,10 @@ String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SC
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 %>
+
+
+
+
 <%
 if(request.getParameter("submit")!=null)
 {  
