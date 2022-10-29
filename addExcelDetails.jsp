@@ -41,7 +41,6 @@ String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SC
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 %>
 
-
 <%
     String location=request.getParameter("location");
     Class.forName("com.mysql.jdbc.Driver");
