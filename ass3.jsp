@@ -9,7 +9,7 @@ String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
 String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
-%>
+%> 
 <!DOCTYPE html>
 <html lang="en">
 <head>

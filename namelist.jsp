@@ -55,7 +55,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         }
     </style>
 </head>
-<body>
+<body> 
     <center>
         <h1><%="Batch "+tab%></h1> 
         <h1><%=subcode+" - "+subname%></h1><hr></center>

@@ -13,7 +13,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 if(request.getParameter("submit")!=null)
 {  
     String regno=request.getParameter("regno");
-    String co1=request.getParameter("co1");
+    String co1=request.getParameter("co1"); 
     String co2=request.getParameter("co2");
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");

@@ -87,7 +87,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <tr><td id="bench">Attainment % >=60</td><td>1</td></tr>
 
         </table>
-
     </div>
         <table>
             <thead>

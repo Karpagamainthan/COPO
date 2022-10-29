@@ -18,7 +18,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        table {
+        table { 
             border-collapse: collapse;
         }
         td,th {

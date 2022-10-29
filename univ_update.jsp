@@ -18,7 +18,7 @@ if(request.getParameter("submit")!=null)
     String sql="update univ set total='"+total+"' where regno='"+regno+"'";
     st.executeUpdate(sql);
     String pass="univ.jsp";
-    response.sendRedirect(pass);
+    response.sendRedirect(pass); 
 }
 %>
 <!DOCTYPE html>

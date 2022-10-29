@@ -16,7 +16,6 @@ if(request.getParameter("submit")!=null)
     String pass="createbatchtable.jsp?tab="+tab;
     response.sendRedirect(pass);
 }
-
 %>
 <!DOCTYPE html>
 <html lang="en">

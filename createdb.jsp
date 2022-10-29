@@ -14,4 +14,4 @@
     st.executeUpdate(sql);
     response.sendRedirect("createnamelisttable.jsp?db="+db);
 %>
-<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %> 

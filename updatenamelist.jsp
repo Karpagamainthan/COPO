@@ -10,7 +10,7 @@ String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SC
 %>
 <%
 if(request.getParameter("submit")!=null)
-{   String id=request.getParameter("id");
+{   String id=request.getParameter("id"); 
     String regno=request.getParameter("regno");
     String name=request.getParameter("name");
     Class.forName("com.mysql.jdbc.Driver");

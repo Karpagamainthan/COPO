@@ -16,7 +16,7 @@
             background-image:url("logo2.jpg");
             background-repeat: no-repeat;
             background-attachment: fixed;  
-            background-size: cover;
+            background-size: cover; 
         }
         #main{
             border: 2px solid navy;

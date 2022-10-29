@@ -14,7 +14,7 @@
     st.executeUpdate(sql);
 %>
 <% 
-    int id=0;
+    int id=0; 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st1= con1.createStatement();

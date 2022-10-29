@@ -14,7 +14,7 @@ if(request.getParameter("submit")!=null)
 {   
     String regno=request.getParameter("regno");
     String name=request.getParameter("name");
-    String email_id=request.getParameter("email");
+    String email_id=request.getParameter("email"); 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();

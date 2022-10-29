@@ -16,7 +16,7 @@ if(request.getParameter("submit")!=null)
     String sql="update "+tab+" set sem='"+sem+"',subcode='"+subcode+"',subname='"+subname+"' where id='"+id+"'";
     st.executeUpdate(sql);
     String pass="batch.jsp?tab="+tab;
-    response.sendRedirect(pass);
+    response.sendRedirect(pass); 
 }
 %>
 <!DOCTYPE html>

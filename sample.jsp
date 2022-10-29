@@ -16,7 +16,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body> 
   Note: excel FILE should contain name,regno,email. email is clg mail
     <form action="addExcelDetails.jsp">
     Enter the file location

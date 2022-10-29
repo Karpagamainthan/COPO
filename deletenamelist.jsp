@@ -15,7 +15,7 @@ Class.forName("com.mysql.jdbc.Driver");
     String sql1="delete from iat1 where id='"+id+"'";
     String sql2="delete from iat2 where id='"+id+"'";
     String sql3="delete from iat3 where id='"+id+"'";
-    String sql4="delete from ass1 where id='"+id+"'";
+    String sql4="delete from ass1 where id='"+id+"'"; 
     String sql5="delete from ass2 where id='"+id+"'";
     String sql6="delete from ass3 where id='"+id+"'";
     String sql7="delete from univ where id='"+id+"'";

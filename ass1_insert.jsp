@@ -11,8 +11,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 %>
 
 
-
-
 <%
 if(request.getParameter("submit")!=null)
 {  

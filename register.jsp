@@ -14,7 +14,7 @@
             background-attachment: fixed;  
             background-size: cover;
         }
-        #bro
+        #bro 
         {
             border: 1px solid whitesmoke;
             border-radius: 15px;

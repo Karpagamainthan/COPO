@@ -10,4 +10,4 @@
     st.executeUpdate(sql);
     response.sendRedirect("itbatches.jsp");
 %>
-<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %> 

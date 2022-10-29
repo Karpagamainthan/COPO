@@ -16,7 +16,7 @@ if(password.equals(cpassword))
     response.sendRedirect("reg-login.jsp"); 
 }
 else
-{  
+{   
     response.sendRedirect("register.jsp"); 
 }
 %>

@@ -11,4 +11,4 @@
     st.executeUpdate(sql);
     response.sendRedirect("batch.jsp?tab="+tab);
 %>
-<%@ include file="footer.jsp" %>
+<%@ include file="footer.jsp" %> 

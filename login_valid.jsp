@@ -16,7 +16,7 @@ int a=0;
             teacher=rs.getString("name");
             a=1;
             break;
-        }
+        } 
     }
 if(a==1)
 {

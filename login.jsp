@@ -14,7 +14,7 @@
     }
         body{
             background-image:url("logo2.jpg");
-            background-repeat: no-repeat;
+            background-repeat: no-repeat; 
             background-attachment: fixed;  
             background-size: cover;
         }

@@ -13,7 +13,7 @@
     pageContext.setAttribute("subname",subname,PageContext.SESSION_SCOPE);
     pageContext.setAttribute("db",db,PageContext.SESSION_SCOPE);
 %>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">

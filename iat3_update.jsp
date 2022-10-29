@@ -18,7 +18,7 @@ if(request.getParameter("submit")!=null)
     Statement st= con.createStatement();
     String sql="update iat3 set co5='"+co5+"',co6='"+co6+"' where regno='"+regno+"'";
     st.executeUpdate(sql);
-    String pass="iat3.jsp";
+    String pass="iat3.jsp"; 
     response.sendRedirect(pass);
 }
 %>

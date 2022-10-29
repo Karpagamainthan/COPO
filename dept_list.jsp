@@ -15,7 +15,7 @@
         }
         
         .flex-container > a {
-          margin: 10px;
+          margin: 10px; 
           text-align: center;
           font-size: 30px;
         }

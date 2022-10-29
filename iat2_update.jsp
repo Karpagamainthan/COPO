@@ -17,7 +17,7 @@ if(request.getParameter("submit")!=null)
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
     String sql="update iat2 set co3='"+co3+"',co4='"+co4+"' where regno='"+regno+"'";
-    st.executeUpdate(sql);
+    st.executeUpdate(sql); 
     String pass="iat2.jsp";
     response.sendRedirect(pass);
 }

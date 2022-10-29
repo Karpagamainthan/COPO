@@ -18,7 +18,7 @@ if(request.getParameter("submit")!=null)
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
     String sql="update univ set total="+total+" where regno='"+regno+"'";
-    st.executeUpdate(sql);
+    st.executeUpdate(sql); 
     String pass="univ.jsp";
     response.sendRedirect(pass);
 }

@@ -15,7 +15,7 @@
     float:right;
 }
 
-.topnav a {
+.topnav a { 
   float: left;
   color: #f2f2f2;
   text-align: center;

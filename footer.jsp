@@ -14,7 +14,7 @@
 <body>
   <footer>
   <div class="foo">
-  </div>
+  </div> 
   </footer>
 </body>
 </html>

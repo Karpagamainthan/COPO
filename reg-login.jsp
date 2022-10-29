@@ -17,7 +17,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;  
             background-size: cover;
-        }
+        } 
         #main{
             border: 2px solid navy;
             height: 350px;

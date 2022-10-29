@@ -17,7 +17,7 @@
             border: 2px solid black;
             height: 250px;
             width: 250px;
-            margin: auto;
+            margin: auto; 
             margin-top: 10%;
             background:greenyellow;
         }

@@ -7,7 +7,7 @@ String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
 String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
 String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
-%>
+%> 
 <%
 if(request.getParameter("submit")!=null)
 {   String regno=request.getParameter("regno");
