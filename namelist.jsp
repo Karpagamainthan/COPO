@@ -70,7 +70,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <label for="email">Student Email</label><br>
             <input type="text" id="email" placeholder="Student email" name="email" size="30" required><br>
             <input type="submit" value="Add Student" name="submit">  
-            <br><a href="sample.jsp">Add Student from excel file</a>
             <input type="reset" value="Reset" name="reset">
         </form>
         <center><a id="subname1" href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></td></center>

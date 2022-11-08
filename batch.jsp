@@ -47,6 +47,7 @@ String tab=request.getParameter("tab");
         {
             padding:5px;
         }
+        
         #subname1 {
             text-decoration: none;
             color:red;
@@ -65,6 +66,20 @@ String tab=request.getParameter("tab");
             <input type="text" id="subcode" placeholder="Subject Code" name="subcode" size="30" required><br>
             <label for="subname">Subject Title</label><br>
             <input type="text" id="subname" placeholder="Subject Title" name="subname" size="30" required><br>
+
+            <label for="co1">CO1</label><br>
+            <input type="text" id="co1" name="co1" size="30" required> 
+            <label for="co2">CO2</label><br>
+            <input type="text" id="co2" name="co2" size="30" required> 
+            <label for="co3">CO3</label><br>
+            <input type="text" id="co3" name="co3" size="30" required> 
+            <label for="co4">CO4</label><br>
+            <input type="text" id="co4" name="co4" size="30" required> 
+            <label for="co5">CO5</label><br>
+            <input type="text" id="co5" name="co5" size="30" required> 
+            <label for="co6">CO6</label><br>
+            <input type="text" id="co6" name="co6" size="30" required> 
+
             <input type="submit" value="Create Subject" name="submit">   <input type="reset" value="Reset" name="reset">
         </form>
         <center><a href="itbatches.jsp">Back To Batches</a></center>
@@ -75,6 +90,12 @@ String tab=request.getParameter("tab");
                     <th>Semester</th>
                     <th>Subject Code</th>
                     <th>Subject Title</th>
+                    <th>CO1</th>
+                    <th>CO2</th>
+                    <th>CO3</th>
+                    <th>CO4</th>
+                    <th>CO5</th>
+                    <th>CO6</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -94,6 +115,12 @@ String tab=request.getParameter("tab");
                     <td><%=rs.getString("sem")%></td>
                     <td><%=rs.getString("subcode")%></td>
                     <td><a id="subname1" href="subject.jsp?id=<%=rs.getString("id")%>&subname=<%=rs.getString("subname")%>&subcode=<%=rs.getString("subcode")%>"><%=rs.getString("subname")%></a></td>
+                    <td><%=rs.getString("co1")%></td>
+                    <td><%=rs.getString("co2")%></td>
+                    <td><%=rs.getString("co3")%></td>
+                    <td><%=rs.getString("co4")%></td>
+                    <td><%=rs.getString("co5")%></td>
+                    <td><%=rs.getString("co6")%></td>
                     <td><a href="updatesubject.jsp?id=<%=id%>">Edit</a></td>
                     <td><a href="deletesubject.jsp?id=<%=id%>">Delete</a></td>
                 </tr>
