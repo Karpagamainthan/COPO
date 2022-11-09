@@ -17,7 +17,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <title>Document</title>
   </head>
   <body> 
-  Note: excel FILE should contain name,regno,email. email is clg mail
+  Note: excel FILE should contain name,regno,email.
     <form action="addExcelDetails.jsp">
     Enter the file location
       <input type="text" name="location" id="location" placeholder="C:new folder/filename.xls"/><br>
