@@ -122,6 +122,15 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         <tr>
             <td colspan="7" align="right"><b>Direct Attainment</b></td>
             <td colspan="3"><b><%=totalatt%></b></td>
+            <%
+           
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
+            st= con.createStatement();
+            sql="update "+tab+" set direct="+totalatt+" where id="+id;
+            st.executeUpdate(sql);
+
+            %>
         </tr>
     </table>
     <a id="a1" href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a>

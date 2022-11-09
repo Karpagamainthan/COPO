@@ -69,6 +69,10 @@ if(request.getParameter("submit")!=null)
         {
             padding:5px;
         }
+        #main
+        {
+            padding-bottom: 5%;
+        }
     </style>
 </head>
 <body>
@@ -98,7 +102,7 @@ if(request.getParameter("submit")!=null)
             %>
             <input type="submit" value="Update" name="submit">   <input type="reset" value="Reset" name="reset">
             </form>
-            <center><a href="namelist.jsp">Back To Namelist</a></center>
+            <center  id="main"><a href="namelist.jsp">Back To Namelist</a></center>
             <br>
     </div>
 </body>
