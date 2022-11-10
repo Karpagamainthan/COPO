@@ -29,13 +29,19 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
           
             margin-bottom:60px;
         }
-        #form a{
+        #form a,#indirect{
             color:black;
             text-decoration: none;
             background-color: lightslategray;
             border:3px solid black;
             padding:5px;
             margin:0px 8px;
+        }
+        #indirect 
+        {
+            display:inline-block;
+            float: right;
+            margin-right: 2%;
         }
         input {
             margin:10px;
@@ -44,24 +50,89 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         input[type="text"]
         {
             width:80%;
-            padding:10px;
         }
+        textarea
+        {
+            display: inline;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: medium;
+            resize: none;
+           margin:10px;
+            padding:10px;
+            width:80%;
+            vertical-align: middle;
+           
+        }
+        span
+        {
+            margin-left: 10%;
+            display: inline-block;
+            font-size: 2em;
+            font-weight: bold;  
+        }
+       
     </style>
+    <script>
+        function myfunction()
+        {
+            alert("hi");
+        }
+    </script>
 </head>
 <body>
     <center>
 
-        <h1><%=subcode+" - "+subname%>-Course outcomes</h1><hr>
+        <p><span><%=subcode+" - "+subname%></span><a id="indirect" href="#">Enable Indirect Survey</a></p><hr>
    
         <div id="form">
-        <form method="GET" action="#">
-        <p>CO1 : <textarea name="co1" rows="1" value="hii"></textarea></p>
-        CO2 : <input type="text" placeholder="Course outcome 2" name="co2" size="20" required><br>
-        CO3 : <input type="text" placeholder="Course outcome 3" name="co2" size="80" required><br>
-        CO4 : <input type="text" placeholder="Course outcome 4" name="co2" size="20" required><br>
-        CO5 : <input type="text" placeholder="Course outcome 5" name="co2" size="80" required><br>
-        CO6 : <input type="text" placeholder="Course outcome 6" name="co2" size="20" required><br>
-        <input type="submit" value="Update CO" name="submit">   <input type="reset" value="Reset" name="reset">
+        <form method="GET" action="saveCO.jsp" onsubmit="return myfunction()">
+        <h1>Course Outcomes</h1>
+        <%
+        Class.forName("com.mysql.jdbc.Driver");
+        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
+        Statement st= con.createStatement();
+        String sql="select * from "+tab+" where id="+id;
+        ResultSet rs=st.executeQuery(sql);
+        rs.next();
+        String s;
+        %>
+        CO1 : 
+        <%
+        s=rs.getString("co1");
+        if(s!=null) { %> <textarea placeholder="Course outcome 1" name="co1" rows="2" ><%=s%></textarea><% }
+        else { %><textarea placeholder="Course outcome 1" name="co1" rows="2" ></textarea><% } %>
+        <br>
+        CO2 : 
+        <%
+        s=rs.getString("co2");
+        if(s!=null) { %> <textarea placeholder="Course outcome 2" name="co2" rows="2" ><%=s%></textarea><% }
+        else { %><textarea placeholder="Course outcome 2" name="co2" rows="2" ></textarea><% } %>
+        <br>
+        CO3 : 
+        <%
+        s=rs.getString("co3");
+        if(s!=null) { %> <textarea placeholder="Course outcome 3" name="co3" rows="2" ><%=s%></textarea><% }
+        else { %><textarea placeholder="Course outcome 3" name="co3" rows="2" ></textarea><% } %>
+        <br>
+        CO4 : 
+        <%
+        s=rs.getString("co4");
+        if(s!=null) { %> <textarea placeholder="Course outcome 4" name="co4" rows="2" ><%=s%></textarea><% }
+        else { %><textarea placeholder="Course outcome 4" name="co4" rows="2" ></textarea><% } %>
+        <br>
+        CO5 : 
+        <%
+        s=rs.getString("co5");
+        if(s!=null) { %> <textarea placeholder="Course outcome 5" name="co5" rows="2" ><%=s%></textarea><% }
+        else { %><textarea placeholder="Course outcome 5" name="co5" rows="2" ></textarea><% } %>
+        <br>
+        CO6 : 
+        <%
+        s=rs.getString("co6");
+        if(s!=null) { %> <textarea placeholder="Course outcome 6" name="co6" rows="2" ><%=s%></textarea><% }
+        else { %><textarea placeholder="Course outcome 6" name="co6" rows="2" ></textarea><% } %>
+        <br>
+        <input type="submit" value="Save CO" name="submit" onsubmit="return myfunction()">   <input type="reset" value="Reset" name="reset">
         </form>
         <center><a href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></center>
     </div>
