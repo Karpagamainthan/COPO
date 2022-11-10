@@ -82,8 +82,11 @@
         </ul>
         </div>
         <div class="gal">
-        <h2>CO Attainment</h2>
-        <a href="final.jsp">CO Attainment</a><br>
+        <h2>Course Outcomes</h2>
+        <ul>
+        <li><a href="courseoutcomes.jsp">Course outcomes</a></li><br>
+        <li><a href="final.jsp">Direct Attainment</a></li><br>
+        </ul>
         </div>
     </div>
         <div id="back">

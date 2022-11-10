@@ -77,7 +77,6 @@ String tab=request.getParameter("tab");
                     <th>Semester</th>
                     <th>Subject Code</th>
                     <th>Subject Title</th>
-                    <th>Course Outcomes</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -97,7 +96,6 @@ String tab=request.getParameter("tab");
                     <td><%=rs.getString("sem")%></td>
                     <td><%=rs.getString("subcode")%></td>
                     <td><a id="subname1" href="subject.jsp?id=<%=rs.getString("id")%>&subname=<%=rs.getString("subname")%>&subcode=<%=rs.getString("subcode")%>"><%=rs.getString("subname")%></a></td>
-                    <td><a href="courseoutcomes.jsp?id=<%=id%>">Course Outcomes</a></td>
                     <td><a href="updatesubject.jsp?id=<%=id%>">Edit</a></td>
                     <td><a href="deletesubject.jsp?id=<%=id%>">Delete</a></td>
                 </tr>
