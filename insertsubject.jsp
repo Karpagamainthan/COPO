@@ -7,16 +7,10 @@
     String sem=request.getParameter("sem");
     String subcode=request.getParameter("subcode");
     String subname=request.getParameter("subname");
-    String co1=request.getParameter("co1");
-    String co2=request.getParameter("co2");
-    String co3=request.getParameter("co3");
-    String co4=request.getParameter("co4");
-    String co5=request.getParameter("co5");
-    String co6=request.getParameter("co6");
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st= con.createStatement();
-    String sql="insert into "+tab+"(sem,subcode,subname,co1,co2,co3,co4,co5,co6) values('"+sem+"','"+subcode+"','"+subname+"','"+co1+"','"+co2+"','"+co3+"','"+co4+"','"+co5+"','"+co6+"')";
+    String sql="insert into "+tab+"(sem,subcode,subname) values('"+sem+"','"+subcode+"','"+subname+"')";
     st.executeUpdate(sql);
 %>
 <% 

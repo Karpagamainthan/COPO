@@ -8,7 +8,7 @@
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
-    String sql="create table `namelist` (`id` int(11) not null auto_increment primary key,`regno` varchar(30) default null,`name` varchar(30) default null,`email_id` varchar(100) not null,`co1` int(11) default null,`co2` int(11) default null,`co3` int(11) default null,`co4` int(11) default null,`co5` int(11) default null,`co6` int(11) default null,`total` int(11) default null) ";
+    String sql="create table `namelist` (`id` int(11) not null auto_increment primary key,`regno` varchar(30) not null,`name` varchar(30) default null,`email_id` varchar(100) not null) ";
     String sql1="create table iat1(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     String sql2="create table iat2(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     String sql3="create table iat3(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
@@ -17,6 +17,7 @@
     String sql6="create table ass3(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     String sql7="create table univ(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     String sql8="create table final(co varchar(30),iat1 int,iat2 int,iat3 int,ass1 int,ass2 int,ass3 int,univ int)";
+
     String sql9="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co1',0,0,0,0,0,0,0)";
     String sql10="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co2',0,0,0,0,0,0,0)";
     String sql11="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co3',0,0,0,0,0,0,0)";
@@ -40,6 +41,9 @@
     st.executeUpdate(sql13);
     st.executeUpdate(sql14);
     st.executeUpdate(sql15);
+
+    String sql16="create table indirect(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
+    st.executeUpdate(sql16);
     response.sendRedirect("batch.jsp?tab="+tab);
 %>
 <%@ include file="footer.jsp" %>
