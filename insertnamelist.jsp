@@ -18,7 +18,7 @@ if(request.getParameter("submit")!=null)
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
-    String sql="insert into namelist(regno,name,email_id) values('"+regno+"','"+name+"','"+email_id+")";
+    String sql="insert into namelist(regno,name,email) values('"+regno+"','"+name+"','"+email_id+")";
     String sql1="insert into iat1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql2="insert into iat2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql3="insert into iat3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
@@ -26,7 +26,7 @@ if(request.getParameter("submit")!=null)
     String sql5="insert into ass2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql6="insert into ass3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql7="insert into univ(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-    String sql7="insert into indirect(regno,name) values('"+regno+"','"+name+")";
+    String sql8="insert into indirect(regno,name) values('"+regno+"','"+name+")";
     st.executeUpdate(sql);
     st.executeUpdate(sql1);
     st.executeUpdate(sql2);
@@ -35,6 +35,7 @@ if(request.getParameter("submit")!=null)
     st.executeUpdate(sql5);
     st.executeUpdate(sql6);
     st.executeUpdate(sql7);
+    st.executeUpdate(sql8);
     String pass="namelist.jsp";
     response.sendRedirect(pass);
 }

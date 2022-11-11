@@ -61,8 +61,8 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             padding:10px;
             width:80%;
             vertical-align: middle;
-           
         }
+
         span
         {
             margin-left: 10%;
@@ -73,16 +73,62 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
        
     </style>
     <script>
-        function myfunction()
+        function validate()
         {
-            alert("hi");
+                var a=document.getElementById("co1").value;
+                var s="saveCO.jsp"
+                if(a==null||a=="")
+                {
+                    alert("Enter Course Outcome 1");
+                    return false;
+                }
+                s=s+"?co1="+a;
+                a=document.getElementById("co2").value;
+                if(a==null||a=="")
+                {
+                    alert("Enter Course Outcome 2");
+                    return false;
+                }
+                s=s+"&co2="+a;
+                a=document.getElementById("co3").value;
+                if(a==null||a=="")
+                {
+                    alert("Enter Course Outcome 3");
+                    return false;
+                }
+                s=s+"&co3="+a;
+                a=document.getElementById("co4").value;
+                if(a==null||a=="")
+                {
+                    alert("Enter Course Outcome 4");
+                    return false;
+                }
+                s=s+"&co4="+a;
+                a=document.getElementById("co5").value;
+                if(a==null||a=="")
+                {
+                    alert("Enter Course Outcome 5");
+                    return false;
+                }
+                s=s+"&co5="+a;
+                a=document.getElementById("co6").value;
+                if(a==null||a=="")
+                {
+                    alert("Enter Course Outcome 6");
+                    return false;
+                }
+                s=s+"&co6="+a+"&indirect=1";
+                document.getElementById("indirect").href=s;
+                confirm(`All the previous indirect attainments will be deleted.Are you sure?`);
+               
+            
         }
     </script>
 </head>
 <body>
     <center>
 
-        <p><span><%=subcode+" - "+subname%></span><a id="indirect" href="#">Enable Indirect Survey</a></p><hr>
+        <p><span><%=subcode+" - "+subname%></span><a id="indirect" href="saveCO.jsp" onclick="return validate()">New Indirect Survey</a></p><hr>
    
         <div id="form">
         <form method="GET" action="saveCO.jsp" onsubmit="return myfunction()">
@@ -99,40 +145,34 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         CO1 : 
         <%
         s=rs.getString("co1");
-        if(s!=null) { %> <textarea placeholder="Course outcome 1" name="co1" rows="2" ><%=s%></textarea><% }
-        else { %><textarea placeholder="Course outcome 1" name="co1" rows="2" ></textarea><% } %>
+        %> <textarea placeholder="Course outcome 1" name="co1" rows="2" id="co1" ><%=s%></textarea> 
         <br>
         CO2 : 
         <%
         s=rs.getString("co2");
-        if(s!=null) { %> <textarea placeholder="Course outcome 2" name="co2" rows="2" ><%=s%></textarea><% }
-        else { %><textarea placeholder="Course outcome 2" name="co2" rows="2" ></textarea><% } %>
+        %> <textarea placeholder="Course outcome 2" name="co2" rows="2" id="co2"><%=s%></textarea>
         <br>
         CO3 : 
         <%
         s=rs.getString("co3");
-        if(s!=null) { %> <textarea placeholder="Course outcome 3" name="co3" rows="2" ><%=s%></textarea><% }
-        else { %><textarea placeholder="Course outcome 3" name="co3" rows="2" ></textarea><% } %>
+         %> <textarea placeholder="Course outcome 3" name="co3" rows="2" id="co3"><%=s%></textarea>
         <br>
         CO4 : 
         <%
         s=rs.getString("co4");
-        if(s!=null) { %> <textarea placeholder="Course outcome 4" name="co4" rows="2" ><%=s%></textarea><% }
-        else { %><textarea placeholder="Course outcome 4" name="co4" rows="2" ></textarea><% } %>
+        %> <textarea placeholder="Course outcome 4" name="co4" rows="2" id="co4"><%=s%></textarea>
         <br>
         CO5 : 
         <%
         s=rs.getString("co5");
-        if(s!=null) { %> <textarea placeholder="Course outcome 5" name="co5" rows="2" ><%=s%></textarea><% }
-        else { %><textarea placeholder="Course outcome 5" name="co5" rows="2" ></textarea><% } %>
+        %> <textarea placeholder="Course outcome 5" name="co5" rows="2" id="co5"><%=s%></textarea>
         <br>
         CO6 : 
         <%
         s=rs.getString("co6");
-        if(s!=null) { %> <textarea placeholder="Course outcome 6" name="co6" rows="2" ><%=s%></textarea><% }
-        else { %><textarea placeholder="Course outcome 6" name="co6" rows="2" ></textarea><% } %>
+        %> <textarea placeholder="Course outcome 6" name="co6" rows="2" id="co6" ><%=s%></textarea>
         <br>
-        <input type="submit" value="Save CO" name="submit" onsubmit="return myfunction()">   <input type="reset" value="Reset" name="reset">
+        <input type="submit" value="Save CO" name="submit" >   <input type="reset" value="Reset" name="reset">
         </form>
         <center><a href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></center>
     </div>
