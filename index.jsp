@@ -49,7 +49,7 @@
         </h1>
         <hr>
         <button onclick="document.location='login.jsp'">DIRECT</button>
-        <button onclick="document.location='login.jsp'" disabled>INDIRECT</button>
+        <button onclick="document.location='stud_login.jsp'">INDIRECT</button>
     </div>
 </body>
 </html>

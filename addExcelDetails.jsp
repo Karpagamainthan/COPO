@@ -2,7 +2,6 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ include file="header.jsp" %>
-
 <%@page import="org.apache.poi.hwpf.HWPFDocument"%>
 <%@page import="org.apache.poi.hwpf.extractor.WordExtractor"%>
 <%@page import="org.apache.poi.poifs.filesystem.*"%>
@@ -48,42 +47,53 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     Statement st= con.createStatement();
      try
      {
-            String name="mainthan",rollno="714019205058",email=null;
-            PreparedStatement pstm = null ;
-            FileInputStream input = new FileInputStream(location);
-            POIFSFileSystem fs = new POIFSFileSystem(input); //creating a new poi reference to the given excel file
-            HSSFWorkbook wb = new HSSFWorkbook(fs);
-            HSSFSheet sheet = wb.getSheetAt(0);
-            Row row;
-            for(int i=1; i<=sheet.getLastRowNum(); i++)
-            
-            {  //points to the starting of excel i.e excel first row
-                row = (Row) sheet.getRow(i);  //sheet number
+        String name,rollno,email=null;
+        PreparedStatement pstm = null ;
+        FileInputStream input = new FileInputStream(location);
+        POIFSFileSystem fs = new POIFSFileSystem(input); //creating a new poi reference to the given excel file
+        HSSFWorkbook wb = new HSSFWorkbook(fs);
+        HSSFSheet sheet = wb.getSheetAt(0);
+        Row row;
+        int i=1;
 
-                if( row.getCell(0)==null) 
-                { rollno = "0";}  //suppose excel cell is empty then its set to 0 the variable
-                else rollno = row.getCell(0).toString();   //else copies cell data to name variable
+        ArrayList<String> presentRegno=new ArrayList<>();  // present regno in db add to arrayList
+        String sql="select * from namelist ORDER by regno";
+        ResultSet rs=st.executeQuery(sql);
+        while(rs.next())
+        {
+            presentRegno.add(rs.getString("regno"));
+            i++;
+        }
 
-                if( row.getCell(1)==null) 
-                { name = "0"; }
-                else name= row.getCell(1).toString();
-
-                if( row.getCell(2)==null) 
-                { email = "0";   }
-                else  email   = row.getCell(2).toString();
-                rollno=new String(rollno);
-                rollno = rollno.replace(".","").replace("E11"," ").trim();
-                while(rollno.length()!=12)
-                    rollno=rollno+"0";
-                String sq="INSERT INTO namelist(name,regno,email_id) VALUES('"+name+"','"+rollno+"','"+email+"')";                   
-
+        for( i=1; i<=sheet.getLastRowNum(); i++)
+        {  
+            row = (Row) sheet.getRow(i);  //sheet number
+            if( row.getCell(0)==null) 
+            { 
+                rollno = "0";
+            }  //suppose excel cell is empty then its set to 0 the variable
+            else 
+                rollno = row.getCell(0).toString();   //else copies cell data to name variable
+            if( row.getCell(1)==null) 
+            { name = "0"; }
+            else name= row.getCell(1).toString();
+            if( row.getCell(2)==null) 
+            { email = "0";   }
+            else  email   = row.getCell(2).toString();
+            rollno=new String(rollno);
+            rollno = rollno.replace(".","").replace("E11"," ").trim();
+            while(rollno.length()!=12)
+                rollno=rollno+"0";
+            if(!presentRegno.contains(rollno))
+            {
+                presentRegno.add(rollno);
+                String sq="INSERT INTO namelist(name,regno,email_id) VALUES('"+name+"','"+rollno+"','"+email+"')";
                 st.executeUpdate(sq);
             }
-            
-   }
-   catch(Exception e){
-       out.println(e);
-   }
+        }
+    }
+    catch(Exception e){
+        out.println(e);
+    }
    response.sendRedirect("namelist.jsp");
- 
 %>
