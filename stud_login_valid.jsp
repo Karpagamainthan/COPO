@@ -33,7 +33,7 @@ if(a==1)
 
 else
 { 
-    RequestDispatcher rd=request.getRequestDispatcher("invalidlogin.jsp"); 
+    RequestDispatcher rd=request.getRequestDispatcher("student_invalid_login.jsp"); 
     rd.forward(request, response); 
 }
 %> 
