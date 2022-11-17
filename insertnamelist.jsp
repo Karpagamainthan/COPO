@@ -14,11 +14,11 @@ if(request.getParameter("submit")!=null)
 {   
     String regno=request.getParameter("regno");
     String name=request.getParameter("name");
-    String email_id=request.getParameter("email"); 
+    String email=request.getParameter("email"); 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
-    String sql="insert into namelist(regno,name,email) values('"+regno+"','"+name+"','"+email_id+")";
+    String sql="insert into namelist(regno,name,email) values('"+regno+"','"+name+"','"+email+")";
     String sql1="insert into iat1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql2="insert into iat2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql3="insert into iat3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";

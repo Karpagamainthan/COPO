@@ -13,6 +13,14 @@ if(request.getParameter("submit")!=null)
     Statement st= con.createStatement();
     String sql="insert into itbatches(dept,batch) values('"+dept+"','"+batch+"')";
     st.executeUpdate(sql);
+
+    java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/it","root","");
+    Statement st1= con1.createStatement();
+    String sql1="create table "+batch+" (`id` int(11) not null auto_increment primary key,`regno` varchar(30) not null,`name` varchar(30) default null,`email` varchar(100) not null) ";
+    String sql2="alter table "+batch+" add unique key `emailidindex` (`email`),add unique key `regno` (`regno`)";
+    st1.executeUpdate(sql1);
+    st1.executeUpdate(sql2);
+
     String pass="createbatchtable.jsp?tab="+tab;
     response.sendRedirect(pass);
 }

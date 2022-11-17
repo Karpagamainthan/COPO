@@ -8,7 +8,7 @@
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
-    String sql="create table `namelist` (`id` int(11) not null auto_increment primary key,`regno` varchar(30) not null,`name` varchar(30) default null,`email_id` varchar(100) not null) ";
+    String sql="create table `namelist` (`id` int(11) not null auto_increment primary key,`regno` varchar(30) not null,`name` varchar(30) default null,`email` varchar(100) not null) ";
     String sql1="create table iat1(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     String sql2="create table iat2(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     String sql3="create table iat3(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
@@ -24,7 +24,7 @@
     String sql12="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co4',0,0,0,0,0,0,0)";
     String sql13="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co5',0,0,0,0,0,0,0)";
     String sql14="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co6',0,0,0,0,0,0,0)";
-    String sql15="alter table `namelist` add unique key `emailidindex` (`email_id`),add unique key `regno` (`regno`)";
+    String sql15="alter table `namelist` add unique key `emailidindex` (`email`),add unique key `regno` (`regno`)";
     st.executeUpdate(sql);
     st.executeUpdate(sql1);
     st.executeUpdate(sql2);
