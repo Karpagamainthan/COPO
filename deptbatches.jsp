@@ -11,10 +11,10 @@ if(request.getParameter("submit")!=null)
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st= con.createStatement();
-    String sql="insert into itbatches(dept,batch) values('"+dept+"','"+batch+"')";
+    String sql="insert into "+dept+"batches(dept,batch) values('"+dept+"','"+batch+"')";
     st.executeUpdate(sql);
 
-    java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/it","root","");
+    java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
     Statement st1= con1.createStatement();
     String sql1="create table "+batch+" (`id` int(11) not null auto_increment primary key,`regno` varchar(30) not null,`name` varchar(30) default null,`email` varchar(100) not null) ";
     String sql2="alter table "+batch+" add unique key `emailidindex` (`email`),add unique key `regno` (`regno`)";
@@ -31,7 +31,7 @@ if(request.getParameter("submit")!=null)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CO PO</title>
     <style>
         table {
             border:1px solid grey;
@@ -69,12 +69,19 @@ if(request.getParameter("submit")!=null)
         </style>
 </head>
 <body>
+    <%
+    String dept=request.getParameter("dept");
+    if(dept!=null)
+    pageContext.setAttribute("dept",dept,PageContext.SESSION_SCOPE); 
+
+    dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
+    %>
     <div>
         <h1>Create New Batch</h1>
         <div id="form">
         <form action="#" method="post">
             <label for="dept">Department</label><br>
-            <input type="text" name="dept" id="dept" value="IT" ><br>
+            <input type="text" name="dept" id="dept" value="<%=dept%>" ><br>
             <label for="batch">Enter Batch</label><br>
             <input type="text" name="batch" id="batch" placeholder="2000_2004" pattern="[0-9]{4}_[0-9]{4}"  required><br>
             <input type="submit" name="submit" value="Create">
@@ -89,10 +96,11 @@ if(request.getParameter("submit")!=null)
                 </tr>
             </thead>
             <%
+             
             Class.forName("com.mysql.jdbc.Driver");
             java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
             Statement st= con.createStatement();
-            String sql="select * from itbatches ORDER by batch";
+            String sql="select * from "+dept+"batches ORDER by batch";
             ResultSet rs=st.executeQuery(sql);
             while(rs.next())
             {
@@ -103,7 +111,7 @@ if(request.getParameter("submit")!=null)
             %>
                 <tr>
                     <td><a href="batch.jsp?tab=<%=tab1%>"><%=batch1%></a></td>
-                    <td><a href="deletebatch.jsp?id=<%=id%>">Delete</a></td>
+                    <td><a href="deletebatch.jsp?id=<%=id%>&batch=<%=batch1%>" onclick="return confirm('Are you sure you want to delete the batch')">Delete</a></td>
                 </tr>
             <%
             }

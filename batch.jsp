@@ -11,7 +11,7 @@ String tab=request.getParameter("tab");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CO PO</title>
     <style>
         table {
             border:1px solid grey;
@@ -69,7 +69,7 @@ String tab=request.getParameter("tab");
 
             <input type="submit" value="Create Subject" name="submit">   <input type="reset" value="Reset" name="reset">
         </form>
-        <center><a href="itbatches.jsp">Back To Batches</a></center>
+        <center><a href="deptbatches.jsp">Back To Batches</a></center>
     </div>
         <table border="1">
             <thead>
@@ -97,7 +97,7 @@ String tab=request.getParameter("tab");
                     <td><%=rs.getString("subcode")%></td>
                     <td><a id="subname1" href="subject.jsp?id=<%=rs.getString("id")%>&subname=<%=rs.getString("subname")%>&subcode=<%=rs.getString("subcode")%>"><%=rs.getString("subname")%></a></td>
                     <td><a href="updatesubject.jsp?id=<%=id%>">Edit</a></td>
-                    <td><a href="deletesubject.jsp?id=<%=id%>">Delete</a></td>
+                    <td><a href="deletesubject.jsp?id=<%=id%>" onclick="return confirm('Are you sure you want to delete the subject')">Delete</a></td>
                 </tr>
             <%
             }

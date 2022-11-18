@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CO PO</title>
     <style>
     body{
             background-image:url("logo2.jpg");
@@ -48,8 +48,8 @@
             CO & PO 
         </h1>
         <hr>
-        <button onclick="document.location='login.jsp'">DIRECT</button>
-        <button onclick="document.location='stud_login.jsp'">INDIRECT</button>
+        <button onclick="CO PO.location='login.jsp'">DIRECT</button>
+        <button onclick="CO PO.location='stud_login.jsp'">INDIRECT</button>
     </div>
 </body>
 </html>

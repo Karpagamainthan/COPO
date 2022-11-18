@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CO PO</title>
     <style>
     /* hello ajith */
         body {
@@ -27,10 +27,10 @@
     <h1>WELCOME</h1>
     <h2>SELECT YOUR DEPARTMENT</h2>
     <div class="flex-container">
-      <a href="eeebatches.jsp"><img src="deptEEE.jpg" alt="DEPT" width="300" height="300"></a>
-        <a href="itbatches.jsp"><img src="deptIT.jpg" alt="DEPT" width="300" height="300"></a>
-        <a href="mechbatches.jsp"><img src="deptMECH.png" alt="DEPT" width="300" height="300"></a>
-        <a href="ecebatches.jsp"><img src="deptECE.jpg" alt="DEPT" width="300" height="300"></a>
+      <a href="deptbatches.jsp?dept=ee"><img src="deptEEE.jpg" alt="DEPT" width="300" height="300"></a>
+        <a href="deptbatches.jsp?dept=it"><img src="deptIT.jpg" alt="DEPT" width="300" height="300"></a>
+        <a href="deptbatches.jsp?dept=me"><img src="deptMECH.png" alt="DEPT" width="300" height="300"></a>
+        <a href="deptbatches.jsp?dept=ec"><img src="deptECE.jpg" alt="DEPT" width="300" height="300"></a>
       </div>
 
 </body>

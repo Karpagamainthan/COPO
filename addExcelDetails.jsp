@@ -2,7 +2,7 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ include file="header.jsp" %>
-<%@page import="org.apache.poi.hwpf.HWPFDocument"%>
+<%@page import="org.apache.poi.hwpf.HWPFCO PO"%>
 <%@page import="org.apache.poi.hwpf.extractor.WordExtractor"%>
 <%@page import="org.apache.poi.poifs.filesystem.*"%>
 <%@page import="org.apache.poi.hssf.usermodel.HSSFSheet"%>

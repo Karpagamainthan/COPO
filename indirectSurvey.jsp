@@ -172,7 +172,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         s=rs.getString("co6");
         %> <textarea placeholder="Course outcome 6" name="co6" rows="2" id="co6" ><%=s%></textarea>
         <br>
-        <input type="submit" value="Save CO" name="submit" >   
+        <input type="submit" value="Save CO" name="submit" >   <input type="reset" value="Reset" name="reset">
         </form>
         <center><a href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></center>
     </div>
