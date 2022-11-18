@@ -15,7 +15,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO PO</title>
+    <title>document</title>
     <style>
        
         form {
@@ -75,7 +75,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <script>
         function validate()
         {
-                var a=CO PO.getElementById("co1").value;
+                var a=document.getElementById("co1").value;
                 var s="saveCO.jsp"
                 if(a==null||a=="")
                 {
@@ -83,42 +83,42 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                     return false;
                 }
                 s=s+"?co1="+a;
-                a=CO PO.getElementById("co2").value;
+                a=document.getElementById("co2").value;
                 if(a==null||a=="")
                 {
                     alert("Enter Course Outcome 2");
                     return false;
                 }
                 s=s+"&co2="+a;
-                a=CO PO.getElementById("co3").value;
+                a=document.getElementById("co3").value;
                 if(a==null||a=="")
                 {
                     alert("Enter Course Outcome 3");
                     return false;
                 }
                 s=s+"&co3="+a;
-                a=CO PO.getElementById("co4").value;
+                a=document.getElementById("co4").value;
                 if(a==null||a=="")
                 {
                     alert("Enter Course Outcome 4");
                     return false;
                 }
                 s=s+"&co4="+a;
-                a=CO PO.getElementById("co5").value;
+                a=document.getElementById("co5").value;
                 if(a==null||a=="")
                 {
                     alert("Enter Course Outcome 5");
                     return false;
                 }
                 s=s+"&co5="+a;
-                a=CO PO.getElementById("co6").value;
+                a=document.getElementById("co6").value;
                 if(a==null||a=="")
                 {
                     alert("Enter Course Outcome 6");
                     return false;
                 }
                 s=s+"&co6="+a+"&indirect=1";
-                CO PO.getElementById("indirect").href=s;
+                document.getElementById("indirect").href=s;
                 confirm(`All the previous indirect attainments will be deleted.Are you sure?`);
                
             

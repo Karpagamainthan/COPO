@@ -18,38 +18,28 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <title>CO PO</title>
     <style>
        
-        form {
-            width:50%;
+        table {
+            width:60%;
             background-color: gray;
             padding:20px;
             margin-top: 30px;
-             margin-bottom: 30px;
+            margin-bottom: 30px;
         }
-        #form{
-          
-            margin-bottom:60px;
-        }
-        #form a,#indirect{
-            color:black;
-            text-decoration: none;
-            background-color: lightslategray;
-            border:3px solid black;
-            padding:5px;
-            margin:0px 8px;
-        }
-        #indirect 
+        #r td
         {
-            display:inline-block;
-            float: right;
-            margin-right: 2%;
+            border-bottom: 1px double white;
+            margin-bottom: 5px;
         }
+        
         input {
             margin:10px;
             padding:10px;
         }
-        input[type="text"]
+        input[type="radio"]
         {
-            width:80%;
+            height: 15px;
+            width: 15px;
+            accent-color:rgb(0, 0, 0);
         }
         textarea
         {
@@ -62,13 +52,13 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             width:80%;
             vertical-align: middle;
         }
-
-        span
+        input[type="submit"]
         {
-            margin-left: 10%;
-            display: inline-block;
-            font-size: 2em;
-            font-weight: bold;  
+            margin-left: 40%;
+            margin-top: 10%;
+            font-weight:bold;
+            
+            
         }
        
     </style>
@@ -128,11 +118,16 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 <body>
     <center>
 
-        <p><span><%=subcode+" - "+subname%></span><a id="indirect" href="saveCO.jsp" onclick="return validate()">New Indirect Survey</a></p><hr>
+        <h1><%=subcode+" - "+subname%></h1><hr>
    
         <div id="form">
-        <form method="GET" action="saveCO.jsp" onsubmit="return myfunction()">
-        <h1>Course Outcomes</h1>
+            
+        <form method="POST" action="" onsubmit="return myfunction()">
+        <table>
+        <tr>
+        <th>
+        <h1>Course Outcomes</h1></th>
+        </tr>
         <%
         Class.forName("com.mysql.jdbc.Driver");
         java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
@@ -142,39 +137,70 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         rs.next();
         String s;
         %>
-        CO1 : 
-        <%
-        s=rs.getString("co1");
-        %> <textarea placeholder="Course outcome 1" name="co1" rows="2" id="co1" ><%=s%></textarea> 
-        <br>
-        CO2 : 
-        <%
-        s=rs.getString("co2");
-        %> <textarea placeholder="Course outcome 2" name="co2" rows="2" id="co2"><%=s%></textarea>
-        <br>
-        CO3 : 
-        <%
-        s=rs.getString("co3");
-         %> <textarea placeholder="Course outcome 3" name="co3" rows="2" id="co3"><%=s%></textarea>
-        <br>
-        CO4 : 
-        <%
-        s=rs.getString("co4");
-        %> <textarea placeholder="Course outcome 4" name="co4" rows="2" id="co4"><%=s%></textarea>
-        <br>
-        CO5 : 
-        <%
-        s=rs.getString("co5");
-        %> <textarea placeholder="Course outcome 5" name="co5" rows="2" id="co5"><%=s%></textarea>
-        <br>
-        CO6 : 
-        <%
-        s=rs.getString("co6");
-        %> <textarea placeholder="Course outcome 6" name="co6" rows="2" id="co6" ><%=s%></textarea>
-        <br>
-        <input type="submit" value="Save CO" name="submit" >   <input type="reset" value="Reset" name="reset">
+        <tr id="r"><td>
+            <b>CO1 : </b>
+            <%
+            s=rs.getString("co1");
+            %> <textarea placeholder="Course outcome 1" rows="2" readonly><%=s%></textarea> 
+            </td><td>
+            <input type="radio" name="co1" id="co1a" value="3" required>Highly satisfied<br>
+            <input type="radio" name="co1" id="co1b" value="2" required>Satisfied<br>
+            <input type="radio" name="co1" id="co1c" value="1" required>Not satisfied
+        </td></tr>
+        <tr id="r"><td>
+            <b>CO2 : </b>
+            <%
+            s=rs.getString("co2");
+            %> <textarea placeholder="Course outcome 2" rows="2" readonly><%=s%></textarea> 
+            </td><td>
+            <input type="radio" name="co2" id="co2a" value="3" required>Highly satisfied<br>
+            <input type="radio" name="co2" id="co2b" value="2" required>Satisfied<br>
+            <input type="radio" name="co2" id="co2c" value="1" required>Not satisfied
+        </td></tr>
+        <tr id="r"><td>
+            <b>CO3 : </b>
+            <%
+            s=rs.getString("co3");
+            %> <textarea placeholder="Course outcome 3" rows="2" readonly><%=s%></textarea> 
+            </td><td>
+            <input type="radio" name="co3" id="co3a" value="3" required>Highly satisfied<br>
+            <input type="radio" name="co3" id="co3b" value="2" required>Satisfied<br>
+            <input type="radio" name="co3" id="co3c" value="1" required>Not satisfied
+        </td></tr>
+        <tr id="r"><td>
+            <b>CO4 : </b>
+            <%
+            s=rs.getString("co4");
+            %> <textarea placeholder="Course outcome 4" rows="2" readonly><%=s%></textarea> 
+            </td><td>
+            <input type="radio" name="co4" id="co4a" value="3" required>Highly satisfied<br>
+            <input type="radio" name="co4" id="co4b" value="2" required>Satisfied<br>
+            <input type="radio" name="co4" id="co4c" value="1" required>Not satisfied
+        </td></tr>
+        <tr id="r"><td>
+            <b>CO5 : </b>
+            <%
+            s=rs.getString("co5");
+            %> <textarea placeholder="Course outcome 5" rows="2" readonly><%=s%></textarea> 
+            </td><td>
+            <input type="radio" name="co5" id="co5a" value="3" required>Highly satisfied<br>
+            <input type="radio" name="co5" id="co5b" value="2" required>Satisfied<br>
+            <input type="radio" name="co5" id="co5c" value="1" required>Not satisfied
+        </td></tr>
+        <tr><td>
+            <b>CO6 : </b>
+            <%
+            s=rs.getString("co6");
+            %> <textarea placeholder="Course outcome 6" rows="2" readonly><%=s%></textarea> 
+            </td><td>
+            <input type="radio" name="co6" id="co6a" value="3" required>Highly satisfied<br>
+            <input type="radio" name="co6" id="co6b"  value="2" required>Satisfied<br>
+            <input type="radio" name="co6" id="co6c" value="1" required>Not satisfied
+        </td></tr>
+        <tr><td></td><td><input type="submit" value="Submit" name="submit" ></td></tr>
+        </table>
         </form>
-        <center><a href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></center>
+       
     </div>
 </center>
     

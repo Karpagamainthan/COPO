@@ -10,7 +10,7 @@
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st= con.createStatement();
-    String sql="insert into "+tab+"(sem,subcode,subname) values('"+sem+"','"+subcode+"','"+subname+"')";
+    String sql="insert into "+tab+"(sem,subcode,subname,co1,co2,co3,co4,co5,co6,enableIndirect) values('"+sem+"','"+subcode+"','"+subname+"','','','','','','',0)";
     st.executeUpdate(sql);
 %>
 <% 

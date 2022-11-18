@@ -85,6 +85,7 @@
         <h2>Course Outcomes</h2>
         <ul>
         <li><a href="courseoutcomes.jsp">Course outcomes</a></li><br>
+        <li><a href="poMapping.jsp">PO Mappings</a></li><br>
         <li><a href="final.jsp">Direct Attainment</a></li><br>
         </ul>
         </div>

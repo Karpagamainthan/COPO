@@ -44,6 +44,12 @@
 
     String sql16="create table indirect(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
     st.executeUpdate(sql16);
+
+    sql="create table po(co int primary key,co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,co7 int,co8 int,co9 int,co10 int,co11 int,co12 int)";
+    st.executeUpdate(sql);
+
+    sql="insert into po(co) values (1),(2),(3),(4),(5),(6),(7)";
+    st.executeUpdate(sql);
     response.sendRedirect("batch.jsp?tab="+tab);
 %>
 <%@ include file="footer.jsp" %>
