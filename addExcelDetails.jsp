@@ -45,6 +45,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
+
      try
      {
         String name,rollno,email=null;
@@ -55,16 +56,13 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         HSSFSheet sheet = wb.getSheetAt(0);
         Row row;
         int i=1;
-
         ArrayList<String> presentRegno=new ArrayList<>();  // present regno in db add to arrayList
         String sql="select * from namelist ORDER by regno";
         ResultSet rs=st.executeQuery(sql);
         while(rs.next())
         {
             presentRegno.add(rs.getString("regno"));
-            i++;
         }
-
         for( i=1; i<=sheet.getLastRowNum(); i++)
         {  
             row = (Row) sheet.getRow(i);  //sheet number
@@ -84,10 +82,33 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             rollno = rollno.replace(".","").replace("E11"," ").trim();
             while(rollno.length()!=12)
                 rollno=rollno+"0";
+
+            String emailArr[]=email.split("@");
+            String batch=emailArr[0].substring(emailArr[0].length()-4,emailArr[0].length()-2);
+            String dept=emailArr[0].substring(emailArr[0].length()-2,emailArr[0].length());
+            int b1=Integer.parseInt(batch);
+            int b2=b1+4;
+            batch="20"+b1+"_20"+b2;
+            java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
+            Statement st1= con1.createStatement();
+            ArrayList<String> presentRegno1=new ArrayList<>();  // present regno in db add to arrayList
+            String sql1="select * from "+batch+" ORDER by regno";
+            ResultSet rs1=st1.executeQuery(sql1);
+            while(rs1.next())
+            {
+                presentRegno1.add(rs1.getString("regno"));
+            }
+            if(!presentRegno1.contains(rollno))
+            {
+                presentRegno1.add(rollno);
+                String sq="INSERT INTO "+batch+"(name,regno,email) VALUES('"+name+"','"+rollno+"','"+email+"')";
+                st1.executeUpdate(sq);
+            }
+
             if(!presentRegno.contains(rollno))
             {
                 presentRegno.add(rollno);
-                String sq="INSERT INTO namelist(name,regno,email_id) VALUES('"+name+"','"+rollno+"','"+email+"')";
+                String sq="INSERT INTO namelist(name,regno,email) VALUES('"+name+"','"+rollno+"','"+email+"')";
                 st.executeUpdate(sq);
             }
         }

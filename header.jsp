@@ -41,7 +41,7 @@
   String teacher=(String)pageContext.getAttribute("teacher",PageContext.SESSION_SCOPE);
   %>
         <a id="hello" href="dept_list.jsp">Home</a>
-        <a id="j" href="login.jsp">LOGOUT</a>
+        <a id="j" href="index.jsp">LOGOUT</a>
         <a id="j" ><%=teacher%></a>
       </div>
 </header>
