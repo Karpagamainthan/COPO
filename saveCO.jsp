@@ -20,6 +20,8 @@ String sql="update "+tab+" set co1='"+co1+"',co2='"+co2+"',co3='"+co3+"',co4='"+
 st.executeUpdate(sql);
 if(indirect!=null)
 {
+    sql="update "+tab+" set enableIndirect=1 where id="+id;
+    st.executeUpdate(sql);
     con=DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     st=con.createStatement();
     sql="update indirect set co1=0,co2=0,co3=0,co4=0,co5=0,co6=0,total=0";
