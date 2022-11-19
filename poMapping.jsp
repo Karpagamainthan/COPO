@@ -19,7 +19,8 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <style>
         table {
             border:1px solid grey;
-          border-collapse: collapse;
+            border-collapse: collapse;
+            margin-bottom: 30px;
         }
         td,th {
             padding:10px;
@@ -28,7 +29,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         #stuname {
             width:200px;
         }
-        form {
+        #coform {
             width:500px;
             background-color: gray;
             padding:20px;
@@ -41,7 +42,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 
         }
        
-        #form a{
+        input[type="submit"],#form a{
             color:black;
             text-decoration: none;
             background-color: lightslategray;
@@ -70,12 +71,12 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 </head>
 <body> 
     <center>
-        <h1><%=subcode+" - "+subname%></h1><hr></center>
+        <h1><%=tab+"   "+subcode+" - "+subname%></h1><hr></center>
         
     <div class="container">
         <div id="form">
             <h1>Course Outcomes</h1>
-            <form >
+            <form id="coform">
                 
                 <%
                 Class.forName("com.mysql.jdbc.Driver");
@@ -89,32 +90,32 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 CO1 : 
                 <%
                 s=rs.getString("co1");
-                %> <textarea placeholder="Course outcome 1" name="co1" rows="2" id="co1" ><%=s%></textarea> 
+                %> <textarea placeholder="Course outcome 1" name="co1" rows="2" id="co1" readonly ><%=s%></textarea> 
                 <br>
                 CO2 : 
                 <%
                 s=rs.getString("co2");
-                %> <textarea placeholder="Course outcome 2" name="co2" rows="2" id="co2"><%=s%></textarea>
+                %> <textarea placeholder="Course outcome 2" name="co2" rows="2" id="co2" readonly><%=s%></textarea>
                 <br>
                 CO3 : 
                 <%
                 s=rs.getString("co3");
-                 %> <textarea placeholder="Course outcome 3" name="co3" rows="2" id="co3"><%=s%></textarea>
+                 %> <textarea placeholder="Course outcome 3" name="co3" rows="2" id="co3" readonly><%=s%></textarea>
                 <br>
                 CO4 : 
                 <%
                 s=rs.getString("co4");
-                %> <textarea placeholder="Course outcome 4" name="co4" rows="2" id="co4"><%=s%></textarea>
+                %> <textarea placeholder="Course outcome 4" name="co4" rows="2" id="co4" readonly><%=s%></textarea>
                 <br>
                 CO5 : 
                 <%
                 s=rs.getString("co5");
-                %> <textarea placeholder="Course outcome 5" name="co5" rows="2" id="co5"><%=s%></textarea>
+                %> <textarea placeholder="Course outcome 5" name="co5" rows="2" id="co5" readonly><%=s%></textarea>
                 <br>
                 CO6 : 
                 <%
                 s=rs.getString("co6");
-                %> <textarea placeholder="Course outcome 6" name="co6" rows="2" id="co6" ><%=s%></textarea>
+                %> <textarea placeholder="Course outcome 6" name="co6" rows="2" id="co6"  readonly ><%=s%></textarea>
                 <br>
                 </form>
         <center><a id="subname1" href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></td></center>
@@ -122,6 +123,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     </div>
     <div id="table">
         <h1>PO Mapping</h1>
+        <form action="savepomapping.jsp" method="GET">
         <table border="1">
             <thead>
                 <tr>
@@ -149,19 +151,48 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
              rs=st.executeQuery(sql);
             while(rs.next())
             {
+                if(i==7)
+                break;
             %>
                 <tr>
                     <td><b><%=rs.getInt("co")%></b></td>
-                    <td><input type="number" min="0" max="3" value="<%=rs.getInt("co1")%>"></td>
-                    <td><%=rs.getInt("co2")%></td>
-                    <td><%=rs.getInt("co3")%></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po1" value="<%=rs.getInt("po1")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po2" value="<%=rs.getInt("po2")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po3" value="<%=rs.getInt("po3")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po4" value="<%=rs.getInt("po4")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po5" value="<%=rs.getInt("po5")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po6" value="<%=rs.getInt("po6")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po7" value="<%=rs.getInt("po7")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po8" value="<%=rs.getInt("po8")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po9" value="<%=rs.getInt("po9")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po10" value="<%=rs.getInt("po10")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po11" value="<%=rs.getInt("po11")%>"></td>
+                    <td><input type="number" min="0" max="3" name="co<%=i%>po12" value="<%=rs.getInt("po12")%>"></td>   
                 </tr>
             <%
             i++;
             }
             %>
-            
+            <tr><td colspan="13"><center><input type="submit" value="Save Mapping"></center></td></tr>
+            <tr>
+                <td><b>AVG</b></td>
+                <td><b><%=rs.getFloat("po1")%></b></td>
+                <td><b><%=rs.getFloat("po2")%></b></td>
+                <td><b><%=rs.getFloat("po3")%></b></td>
+                <td><b><%=rs.getFloat("po4")%></b></td>
+                <td><b><%=rs.getFloat("po5")%></b></td>
+                <td><b><%=rs.getFloat("po6")%></b></td>
+                <td><b><%=rs.getFloat("po7")%></b></td>
+                <td><b><%=rs.getFloat("po8")%></b></td>
+                <td><b><%=rs.getFloat("po9")%></b></td>
+                <td><b><%=rs.getFloat("po10")%></b></td>
+                <td><b><%=rs.getFloat("po11")%></b></td>
+                <td><b><%=rs.getFloat("po12")%></b></td>    
+            </tr>
+             
         </table>
+        
+    </form>
     </div>
     </div>
 </body>

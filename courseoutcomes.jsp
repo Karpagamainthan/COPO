@@ -29,7 +29,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
           
             margin-bottom:60px;
         }
-        #form a,#indirect{
+        #form a,#indirect,input[type="submit"]{
             color:black;
             text-decoration: none;
             background-color: lightslategray;

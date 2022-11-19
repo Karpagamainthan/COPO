@@ -120,7 +120,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <td><%=att3%></td>
         </tr>
         <tr>
-            <td colspan="7" align="right"><b>Direct Attainment</b></td>
+            <td colspan="7" align="right"><b>CO Direct Attainment</b></td>
             <td colspan="3"><b><%=totalatt%></b></td>
             <%
            
