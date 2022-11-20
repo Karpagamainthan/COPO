@@ -3,6 +3,7 @@
 String email=request.getParameter("email");
 String password=request.getParameter("password");
 int a=0;
+
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st= con.createStatement();

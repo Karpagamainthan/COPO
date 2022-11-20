@@ -2,8 +2,8 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ include file="header.jsp" %>
-<%@page import="org.apache.poi.hwpf.HWPFCO PO"%>
-<%@page import="org.apache.poi.hwpf.extractor.WordExtractor"%>
+
+
 <%@page import="org.apache.poi.poifs.filesystem.*"%>
 <%@page import="org.apache.poi.hssf.usermodel.HSSFSheet"%>
 <%@page import="org.apache.poi.hssf.usermodel.HSSFWorkbook"%>
@@ -35,6 +35,7 @@
 <%
 String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
 String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
+out.println(tab+" "+db);
 String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
@@ -56,7 +57,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         HSSFSheet sheet = wb.getSheetAt(0);
         Row row;
         int i=1;
-        ArrayList<String> presentRegno=new ArrayList<>();  // present regno in db add to arrayList
+        ArrayList<String> presentRegno=new ArrayList<String>();  // present regno in db add to arrayList
         String sql="select * from namelist ORDER by regno";
         ResultSet rs=st.executeQuery(sql);
         while(rs.next())
@@ -91,7 +92,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             batch="20"+b1+"_20"+b2;
             java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
             Statement st1= con1.createStatement();
-            ArrayList<String> presentRegno1=new ArrayList<>();  // present regno in db add to arrayList
+            ArrayList<String> presentRegno1=new ArrayList<String>();  // present regno in db add to arrayList
             String sql1="select * from "+batch+" ORDER by regno";
             ResultSet rs1=st1.executeQuery(sql1);
             while(rs1.next())
@@ -116,5 +117,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     catch(Exception e){
         out.println(e);
     }
-   response.sendRedirect("namelist.jsp");
+    
+    response.sendRedirect("namelist.jsp");
 %>
