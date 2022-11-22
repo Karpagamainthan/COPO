@@ -8,6 +8,7 @@ String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
 String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
+String msg=request.getParameter("msg");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             width:200px;
         }
         form {
-            width:250px;
+            width:320px;
             background-color: gray;
             padding:20px;
             margin-right:100px;
@@ -37,6 +38,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         }
         #form{
             float:left;
+            
         }
         #form a{
             color:black;
@@ -54,6 +56,13 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             padding:5px;
         }
     </style>
+    <script>
+        let msg="<%= msg %>";
+        if(msg=="1")
+        {
+            alert("Student Register Number and Email ID must be unique");
+        }
+    </script>
 </head>
 <body> 
     <center>
@@ -62,6 +71,12 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <h1>Student Name List</h1>
     <div>
         <div id="form">
+            <form method="POST" action="addExcelDetails.jsp">
+                <label for="location"> Enter the file location</label>
+                <input type="text" name="location" id="location" placeholder="C:new folder/filename.xls"/><br>
+                <label>*File should contain Regno,Name and Email</label>
+                <input type="submit" value="Submit" />
+            </form>
         <form method="GET" action="insertnamelist.jsp">
             <label for="regno">Reg Number</label><br>
             <input type="text" id="regno" placeholder="Reg Number" name="regno" size="30" required><br>
@@ -72,6 +87,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <input type="submit" value="Add Student" name="submit">  
             <input type="reset" value="Reset" name="reset">
         </form>
+        
         <center><a id="subname1" href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></td></center>
         <br>
     </div>
@@ -106,6 +122,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <%
             i++;
             }
+            con.close();
             %>
             <tr>
                 <td colspan="3" align="right"><b>Total No of Students</b></td>

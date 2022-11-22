@@ -15,6 +15,7 @@
     st= con.createStatement();
     sql="delete from "+tab+" where id='"+id+"'";
     st.executeUpdate(sql);
+    con.close();
     response.sendRedirect("batch.jsp?tab="+tab);
 %>
 <%@ include file="footer.jsp" %> 

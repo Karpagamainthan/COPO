@@ -7,6 +7,7 @@ if(request.getParameter("submit")!=null)
 {
     String dept=request.getParameter("dept");
     String batch=request.getParameter("batch");
+    pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE); 
     String tab=dept+batch;
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
@@ -71,8 +72,12 @@ if(request.getParameter("submit")!=null)
 <body>
     <%
     String dept=request.getParameter("dept");
+    String deptname=request.getParameter("deptname");
     if(dept!=null)
-    pageContext.setAttribute("dept",dept,PageContext.SESSION_SCOPE); 
+    pageContext.setAttribute("dept",dept,PageContext.SESSION_SCOPE);
+    
+    if(deptname!=null)
+    pageContext.setAttribute("deptname",deptname,PageContext.SESSION_SCOPE);
 
     dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
     %>
@@ -115,6 +120,7 @@ if(request.getParameter("submit")!=null)
                 </tr>
             <%
             }
+            con.close();
             %>
 
         </table>

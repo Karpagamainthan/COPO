@@ -8,17 +8,27 @@ String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
 String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
+String dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
+String batch=tab.substring(2);
+
 %>
 <%
 if(request.getParameter("submit")!=null)
 {   
+    try
+    {
     String regno=request.getParameter("regno");
     String name=request.getParameter("name");
     String email=request.getParameter("email"); 
     Class.forName("com.mysql.jdbc.Driver");
-    java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
+    java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
     Statement st= con.createStatement();
-    String sql="insert into namelist(regno,name,email) values('"+regno+"','"+name+"','"+email+"')";
+    String sql="insert into "+batch+"(regno,name,email) values('"+regno+"','"+name+"','"+email+"')";
+    st.executeUpdate(sql);
+    
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
+    st= con.createStatement();
+    sql="insert into namelist(regno,name,email) values('"+regno+"','"+name+"','"+email+"')";
     String sql1="insert into iat1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql2="insert into iat2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql3="insert into iat3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
@@ -41,5 +51,12 @@ if(request.getParameter("submit")!=null)
 
     response.sendRedirect(pass);
 }
+catch(Exception e)
+{
+    
+    response.sendRedirect("namelist.jsp?msg=1");
+}
+}
+
 %>
 <%@ include file="footer.jsp" %>

@@ -28,6 +28,7 @@ Class.forName("com.mysql.jdbc.Driver");
     st.executeUpdate(sql6);
     st.executeUpdate(sql7);
     String pass="namelist.jsp";
+    con.close();
     response.sendRedirect(pass);
 %>
 <%@ include file="footer.jsp" %>

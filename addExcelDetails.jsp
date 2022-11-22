@@ -133,11 +133,14 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 st.executeUpdate(sql8);
             }
         }
+        con.close();
+        response.sendRedirect("namelist.jsp");
     }
-    catch(Exception e){
-        out.println(e);
+    catch(Exception e)
+    {
+        response.sendRedirect("namelist.jsp?msg=1");
     }
 
     
-    response.sendRedirect("namelist.jsp");
+    
 %>

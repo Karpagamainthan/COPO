@@ -66,7 +66,6 @@
         <h2>Student Name List</h2>
         <ul>
         <li><a href="namelist.jsp"> Student Name List</a></li><br>
-        <li><a href="sample.jsp"> Student Name List<br>by using excel sheet</a></li><br>
         </ul>
         </div>
         <div class="gal">

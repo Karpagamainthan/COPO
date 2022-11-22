@@ -170,6 +170,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         CO6 : 
         <%
         s=rs.getString("co6");
+        con.close();
         %> <textarea placeholder="Course outcome 6" name="co6" rows="2" id="co6" ><%=s%></textarea>
         <br>
         <input type="submit" value="Save CO" name="submit" >   
