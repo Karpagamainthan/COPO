@@ -42,7 +42,7 @@
     st.executeUpdate(sql14);
     st.executeUpdate(sql15);
 
-    String sql16="create table indirect(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,total int)";
+    String sql16="create table indirect(id int AUTO_INCREMENT primary key,regno varchar(30),name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,status varchar(20))";
     st.executeUpdate(sql16);
 
     sql="create table po(co int primary key,po1 float,po2 float,po3 float,po4 float,po5 float,po6 float,po7 float,po8 float,po9 float,po10 float,po11 float,po12 float)";

@@ -28,7 +28,7 @@ int a=0;
 if(a==1)
 {
     pageContext.setAttribute("teacher",teacher,PageContext.SESSION_SCOPE);
-    response.sendRedirect("dept_list.jsp");    
+    response.sendRedirect("student_home.jsp");    
 }
 
 else

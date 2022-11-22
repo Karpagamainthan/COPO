@@ -111,6 +111,26 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 presentRegno.add(rollno);
                 String sq="INSERT INTO namelist(name,regno,email) VALUES('"+name+"','"+rollno+"','"+email+"')";
                 st.executeUpdate(sq);
+
+                String regno=rollno;
+            
+                sql1="insert into iat1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql2="insert into iat2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql3="insert into iat3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql4="insert into ass1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql5="insert into ass2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql6="insert into ass3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql7="insert into univ(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
+                String sql8="insert into indirect(regno,name) values('"+regno+"','"+name+"')";
+            
+                st.executeUpdate(sql1);
+                st.executeUpdate(sql2);
+                st.executeUpdate(sql3);
+                st.executeUpdate(sql4);
+                st.executeUpdate(sql5);
+                st.executeUpdate(sql6);
+                st.executeUpdate(sql7);
+                st.executeUpdate(sql8);
             }
         }
     }

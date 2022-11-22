@@ -48,8 +48,8 @@
             CO & PO 
         </h1>
         <hr>
-        <button onclick="CO PO.location='login.jsp'">DIRECT</button>
-        <button onclick="CO PO.location='stud_login.jsp'">INDIRECT</button>
+        <button onclick="document.location='login.jsp'">DIRECT</button>
+        <button onclick="document.location='stud_login.jsp'">INDIRECT</button>
     </div>
 </body>
 </html>

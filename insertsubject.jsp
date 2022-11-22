@@ -13,7 +13,7 @@
     String sql="insert into "+tab+"(sem,subcode,subname,co1,co2,co3,co4,co5,co6,enableIndirect) values('"+sem+"','"+subcode+"','"+subname+"','','','','','','',0)";
     st.executeUpdate(sql);
     con.close();
-<% 
+
     int id=0; 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");

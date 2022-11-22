@@ -77,7 +77,7 @@
 </head>
 <body>
     <div id="main">
-        <h1>Login</h1>
+        <h1>Student Login</h1>
         <hr>
         <form action="stud_login_valid.jsp" method="post">
             <div>

@@ -11,6 +11,17 @@
     Statement st= con.createStatement();
     String sql="delete from "+dept+"batches where id='"+id+"'";
     st.executeUpdate(sql);
+    
+    sql="select * from "+dept+""+batch;
+    ResultSet rs=st.executeQuery(sql);
+    while(rs.next())
+    {
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
+        st= con.createStatement();
+        String temp=dept+""+batch+"_"+rs.getInt("id");
+        sql="drop database "+temp;
+        st.executeUpdate(sql);
+    }
 
     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     st= con.createStatement();
@@ -21,7 +32,8 @@
     st= con.createStatement();
     sql="drop table "+batch;
     st.executeUpdate(sql);
-
+    
+    con.close();
     response.sendRedirect("deptbatches.jsp");
 %>
 <%@ include file="footer.jsp" %> 

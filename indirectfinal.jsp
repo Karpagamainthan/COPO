@@ -19,14 +19,17 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO PO</title>
     <style>
-        table {
-            border:1px solid grey;
+         table {
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         td,th {
             padding:10px;
-            width:100px;
+            border:1px solid grey;
+            width:80px;
+        }
+        #stuname{
+            width:200px;
         }
         #a1{
             color:black;
@@ -47,7 +50,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <tr>
                 <th>No</th>
                 <th>Reg No</th>
-                <th>Name</th>
+                <th id="stuname">Name</th>
                 <th>CO1</th>
                 <th>CO2</th>
                 <th>CO3</th>
@@ -67,19 +70,26 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         ResultSet rs=st.executeQuery(sql);
         while(rs.next())
         {
+            String status=rs.getString("status");
         %>
             <tr>
                 <td><%=i%></td>
                 <td><%=rs.getString("regno")%></td>
-                <td><%=rs.getString("name")%></td>
+                <td id="stuname"><%=rs.getString("name")%></td>
                 <td><%=rs.getInt("co1")%></td>
                 <td><%=rs.getInt("co2")%></td>
                 <td><%=rs.getInt("co3")%></td>
                 <td><%=rs.getInt("co4")%></td>
                 <td><%=rs.getInt("co5")%></td>
                 <td><%=rs.getInt("co6")%></td>
-                <td><%=rs.getString("status")%></td>
-                <td><a href="enableSurvey.jsp?id=<%=rs.getInt("id")%>"</a></td>
+                <td><%=status%></td>
+                <td>
+                <%
+                if(status.equals("Completed")){
+                %>
+                <a onclick="return confirm('Are you sure want to re-enable the survey')" href="enableSurvey.jsp?id=<%=rs.getInt("id")%>">Re-Enable</a>
+                <% } %>
+                </td>
             </tr>
         <%
         i++;
@@ -97,21 +107,31 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <td><%=rs.getFloat(4)%></td>
             <td><%=rs.getFloat(5)%></td>
             <td><%=rs.getFloat(6)%></td>
-        </tr>
-        <tr>
-            <td colspan="3" align="right"><b>CO Indirect Attainment</b></td>
+            <td><b>Submissions</b></td>
             <%
             rs=st.executeQuery(sql);
             rs.next();
             float avg=rs.getFloat(1)+rs.getFloat(2)+rs.getFloat(3)+rs.getFloat(4)+rs.getFloat(5)+rs.getFloat(6);
             avg=avg/6;
+
+            sql="select count(id) from indirect where status='Completed'";
+            rs=st.executeQuery(sql);
+            rs.next();
+
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
             st= con.createStatement();
             sql="update "+tab+" set indirect="+avg+" where id="+id;
             st.executeUpdate(sql);
+            
+            
+
             con.close();
             %>
+            <td><b><%=rs.getInt(1)%></b></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right"><b>CO Indirect Attainment</b></td>
             <td colspan="6" align="left"><b><%=avg%></b></td>
         </tr>
     </table>

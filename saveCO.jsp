@@ -24,7 +24,7 @@ if(indirect!=null)
     st.executeUpdate(sql);
     con=DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     st=con.createStatement();
-    sql="update indirect set co1=0,co2=0,co3=0,co4=0,co5=0,co6=0,total=0";
+    sql="update indirect set co1=0,co2=0,co3=0,co4=0,co5=0,co6=0,status='Assigned'";
     st.executeUpdate(sql);
 }
 con.close();
