@@ -12,7 +12,7 @@
     Statement st= con.createStatement();
     String sql="insert into "+tab+"(sem,subcode,subname,co1,co2,co3,co4,co5,co6,enableIndirect) values('"+sem+"','"+subcode+"','"+subname+"','','','','','','',0)";
     st.executeUpdate(sql);
-%>
+    con.close();
 <% 
     int id=0; 
     Class.forName("com.mysql.jdbc.Driver");
@@ -24,6 +24,7 @@
     {
         id=rs1.getInt("MAX(id)");
     }
+    con1.close();
     response.sendRedirect("createdb.jsp?id="+id);
     
 %>

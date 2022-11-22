@@ -37,6 +37,8 @@ if(request.getParameter("submit")!=null)
     st.executeUpdate(sql7);
     st.executeUpdate(sql8);
     String pass="namelist.jsp";
+    con.close();
+
     response.sendRedirect(pass);
 }
 %>

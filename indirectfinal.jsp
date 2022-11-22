@@ -53,6 +53,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 <th>CO3</th>
                 <th>CO4</th>
                 <th>CO5</th>
+                <th>CO6</th>
                 <th>Status</th>
                 <th>Re-Enable</th>
             </tr>
@@ -109,9 +110,9 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             st= con.createStatement();
             sql="update "+tab+" set indirect="+avg+" where id="+id;
             st.executeUpdate(sql);
-
+            con.close();
             %>
-            <td colspan="6" align="right"><b><%=avg%></b></td>
+            <td colspan="6" align="left"><b><%=avg%></b></td>
         </tr>
     </table>
     <a id="a1" href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a>

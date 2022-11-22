@@ -27,7 +27,7 @@ if(indirect!=null)
     sql="update indirect set co1=0,co2=0,co3=0,co4=0,co5=0,co6=0,total=0";
     st.executeUpdate(sql);
 }
-
+con.close();
 response.sendRedirect("courseoutcomes.jsp");
 
 

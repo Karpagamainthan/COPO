@@ -50,6 +50,7 @@
 
     sql="insert into po(co) values (1),(2),(3),(4),(5),(6),(7)";
     st.executeUpdate(sql);
+    con.close();
     response.sendRedirect("batch.jsp?tab="+tab);
 %>
 <%@ include file="footer.jsp" %>

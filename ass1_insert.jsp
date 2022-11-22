@@ -23,6 +23,7 @@ if(request.getParameter("submit")!=null)
     String sql="update ass1 set co1="+co1+",co2="+co2+" where regno='"+regno+"'";
     st.executeUpdate(sql);
     String pass="ass1.jsp";
+    con.close();
     response.sendRedirect(pass);
 }
 %>

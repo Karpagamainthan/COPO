@@ -19,12 +19,12 @@ int a=0;
             break;
         } 
     }
+    con.close();
 if(a==1)
 {
     pageContext.setAttribute("teacher",teacher,PageContext.SESSION_SCOPE);
     response.sendRedirect("dept_list.jsp");    
 }
-
 else
 { 
     RequestDispatcher rd=request.getRequestDispatcher("invalidlogin.jsp"); 

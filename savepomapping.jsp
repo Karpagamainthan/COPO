@@ -20,7 +20,7 @@ for(int i=1;i<=12;i++)
 String sql="update po set po"+i+"=ROUND((SELECT ((select sum(po"+i+") from po)-(select po"+i+" from po where co=7))/6),2) where co=7";
 st.executeUpdate(sql);
 }
-
+con.close();
 response.sendRedirect("poMapping.jsp");
 
 

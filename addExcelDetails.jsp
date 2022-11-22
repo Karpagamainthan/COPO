@@ -117,6 +117,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     catch(Exception e){
         out.println(e);
     }
+
     
     response.sendRedirect("namelist.jsp");
 %>

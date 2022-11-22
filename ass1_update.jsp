@@ -20,6 +20,7 @@ if(request.getParameter("submit")!=null)
     String sql="update ass1 set co1='"+co1+"',co2='"+co2+"' where regno='"+regno+"'";
     st.executeUpdate(sql);
     String pass="ass1.jsp";
+    con.close();
     response.sendRedirect(pass);
 }
 %>
@@ -88,6 +89,7 @@ if(request.getParameter("submit")!=null)
             <input type="number" id="co2" placeholder="CO2" name="co2" value="<%=rs.getString("co2")%>" size="30" min="0" max="30" required><br><br>
             <%
             }
+            con.close();
             %>
             <input type="submit" value="Update" name="submit">   <input type="reset" value="Reset" name="reset">
             </form>

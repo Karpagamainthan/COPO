@@ -129,6 +129,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             st= con.createStatement();
             sql="update "+tab+" set direct="+totalatt+" where id="+id;
             st.executeUpdate(sql);
+            con.close();
 
             %>
         </tr>
