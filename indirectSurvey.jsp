@@ -3,11 +3,16 @@
 <%@ page import="java.util.*" %>
 <%@ include file="header.jsp" %>
 <%
-String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
-String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
-String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
-String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
-String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
+String batch=(String)pageContext.getAttribute("batch",PageContext.SESSION_SCOPE);
+String dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
+String regno=(String)pageContext.getAttribute("regno",PageContext.SESSION_SCOPE);
+String id=request.getParameter("id");
+
+pageContext.setAttribute("id",id,PageContext.SESSION_SCOPE);
+String subject=request.getParameter("subject");
+String arr[]=subject.split("-");
+String subcode=arr[0];
+String subname=arr[1];
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,59 +65,23 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             
             
         }
+
+        .red
+        {
+            color:red;
+        }
        
     </style>
     <script>
-        function validate()
-        {
-                var a=CO PO.getElementById("co1").value;
-                var s="saveCO.jsp"
-                if(a==null||a=="")
-                {
-                    alert("Enter Course Outcome 1");
-                    return false;
-                }
-                s=s+"?co1="+a;
-                a=CO PO.getElementById("co2").value;
-                if(a==null||a=="")
-                {
-                    alert("Enter Course Outcome 2");
-                    return false;
-                }
-                s=s+"&co2="+a;
-                a=CO PO.getElementById("co3").value;
-                if(a==null||a=="")
-                {
-                    alert("Enter Course Outcome 3");
-                    return false;
-                }
-                s=s+"&co3="+a;
-                a=CO PO.getElementById("co4").value;
-                if(a==null||a=="")
-                {
-                    alert("Enter Course Outcome 4");
-                    return false;
-                }
-                s=s+"&co4="+a;
-                a=CO PO.getElementById("co5").value;
-                if(a==null||a=="")
-                {
-                    alert("Enter Course Outcome 5");
-                    return false;
-                }
-                s=s+"&co5="+a;
-                a=CO PO.getElementById("co6").value;
-                if(a==null||a=="")
-                {
-                    alert("Enter Course Outcome 6");
-                    return false;
-                }
-                s=s+"&co6="+a+"&indirect=1";
-                CO PO.getElementById("indirect").href=s;
-                confirm(`All the previous indirect attainments will be deleted.Are you sure?`);
-               
-            
-        }
+      var rows = document.getElementById("table")[0].getElementsByTagName("tr");
+
+    // loops through each row
+    for (i = 0; i < rows.length; i++) 
+    {
+        cells = rows[i].getElementsByTagName('td');
+            if (cells[9].innerHTML == 'Assigned')
+                rows[i].className = "red";           
+ }
     </script>
 </head>
 <body>
@@ -122,7 +91,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
    
         <div id="form">
             
-        <form method="POST" action="" onsubmit="return myfunction()">
+        <form method="POST" action="saveindirect.jsp">
         <table>
         <tr>
         <th>
@@ -132,7 +101,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         Class.forName("com.mysql.jdbc.Driver");
         java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
         Statement st= con.createStatement();
-        String sql="select * from "+tab+" where id="+id;
+        String sql="select * from "+dept+""+batch+" where id="+id;
         ResultSet rs=st.executeQuery(sql);
         rs.next();
         String s;

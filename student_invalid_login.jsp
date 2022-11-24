@@ -80,7 +80,7 @@
         <center style="color:red;"><h1>Invalid Email or Password !!!</h1>
         <p>Try to give valid credentials</p></center>
         <hr>
-        <form action="login_valid.jsp" method="post">
+        <form action="stud_login_valid.jsp" method="post">
             <div>
                 <p id="p1" ><i class="fa fa-user icon"></i>&nbsp;
                 <input id="i1" type="email" name="email" required="required" placeholder="   Email"></p>

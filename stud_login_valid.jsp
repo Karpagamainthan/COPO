@@ -15,10 +15,12 @@ int a=0;
     Statement st= con.createStatement();
     String sql="select * from "+batch;
     String teacher="";
+    String regno="";
     ResultSet rs=st.executeQuery(sql);
     while(rs.next())
     {
-        if(rs.getString("email").equals(email)&&rs.getString("regno").equals(password))
+        regno=rs.getString("regno");
+        if(rs.getString("email").equals(email)&&regno.equals(password))
         {
             teacher=rs.getString("name");
             a=1;
@@ -28,6 +30,9 @@ int a=0;
 if(a==1)
 {
     pageContext.setAttribute("teacher",teacher,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("dept",dept,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("regno",regno,PageContext.SESSION_SCOPE);
     response.sendRedirect("student_home.jsp");    
 }
 

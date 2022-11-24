@@ -24,7 +24,7 @@
     String sql12="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co4',0,0,0,0,0,0,0)";
     String sql13="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co5',0,0,0,0,0,0,0)";
     String sql14="insert into final(co,iat1,iat2,iat3,ass1,ass2,ass3,univ) values('co6',0,0,0,0,0,0,0)";
-    String sql15="alter table `namelist` add unique key `emailidindex` (`email`),add unique key `regno` (`regno`)";
+    
     st.executeUpdate(sql);
     st.executeUpdate(sql1);
     st.executeUpdate(sql2);
@@ -40,7 +40,7 @@
     st.executeUpdate(sql12);
     st.executeUpdate(sql13);
     st.executeUpdate(sql14);
-    st.executeUpdate(sql15);
+    
 
     String sql16="create table indirect(id int AUTO_INCREMENT primary key,regno varchar(30)  unique,name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,status varchar(20))";
     st.executeUpdate(sql16);

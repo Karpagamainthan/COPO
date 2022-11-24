@@ -34,6 +34,7 @@
         margin:5px;
         margin-bottom: 50px;
         float:left;
+        height: 350px;
     }
     div a {
        text-decoration: none; 
@@ -55,6 +56,15 @@
     #back a{
         color:black;
     }
+    h2
+    {
+        text-align:center;
+    }
+    .cc1
+    {
+        text-align: left;
+        margin-left: 50px;
+    }
     </style>
 </head>
 <body>
@@ -66,6 +76,14 @@
         <h2>Student Name List</h2>
         <ul>
         <li><a href="namelist.jsp"> Student Name List</a></li><br>
+        </ul>
+        <h2 class="cc1">Course Outcomes</h2>
+        <ul>
+        <li><a href="courseoutcomes.jsp">Course Outcomes</a></li><br>
+        </ul>
+        <h2  class="cc1">PO Mappings</h2>
+        <ul>
+        <li><a href="poMapping.jsp">PO Mappings</a></li><br>
         </ul>
         </div>
         <div class="gal">
@@ -81,12 +99,17 @@
         </ul>
         </div>
         <div class="gal">
-        <h2>Course Outcomes</h2>
+        <h2>Direct Attainment</h2>
         <ul>
-        <li><a href="courseoutcomes.jsp">Course Outcomes</a></li><br>
-        <li><a href="poMapping.jsp">PO Mappings</a></li><br>
         <li><a href="final.jsp">Direct Attainment</a></li><br>
+        </ul>
+        <h2>Indirect Attainment</h2>
+        <ul>
         <li><a href="indirectfinal.jsp">Indirect Attainment</a></li><br>
+        </ul>
+        <h2>Final CO Attainment</h2>
+        <ul>
+        <li><a href="finalCo.jsp">Final CO Attainment</a></li><br>
         </ul>
         </div>
     </div>

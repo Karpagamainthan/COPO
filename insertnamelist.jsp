@@ -36,7 +36,7 @@ if(request.getParameter("submit")!=null)
     String sql5="insert into ass2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql6="insert into ass3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
     String sql7="insert into univ(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-    String sql8="insert into indirect(regno,name) values('"+regno+"','"+name+"')";
+    String sql8="insert into indirect(regno,name,status) values('"+regno+"','"+name+"','Assigned')";
     st.executeUpdate(sql);
     st.executeUpdate(sql1);
     st.executeUpdate(sql2);

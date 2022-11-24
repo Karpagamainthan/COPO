@@ -82,18 +82,18 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 <td><%=rs.getInt("co4")%></td>
                 <td><%=rs.getInt("co5")%></td>
                 <td><%=rs.getInt("co6")%></td>
-                <td><%=status%></td>
+                <td id="status"><%=status%></td>
                 <td>
-                <%
-                if(status.equals("Completed")){
-                %>
+               
                 <a onclick="return confirm('Are you sure want to re-enable the survey')" href="enableSurvey.jsp?id=<%=rs.getInt("id")%>">Re-Enable</a>
-                <% } %>
+                
                 </td>
             </tr>
         <%
         i++;
         }
+        %>
+        <%
         sql="select avg(co1),avg(co2),avg(co3),avg(co4),avg(co5),avg(co6) from indirect";
         rs=st.executeQuery(sql);
         rs.next();
@@ -124,8 +124,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             sql="update "+tab+" set indirect="+avg+" where id="+id;
             st.executeUpdate(sql);
             
-            
-
             con.close();
             %>
             <td><b><%=rs.getInt(1)%></b></td>
