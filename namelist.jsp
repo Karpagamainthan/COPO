@@ -9,6 +9,12 @@ String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SC
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 String msg=request.getParameter("msg");
+    String batch=(String)pageContext.getAttribute("batch",PageContext.SESSION_SCOPE);
+    String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("id",id,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("subcode",subcode,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("subname",subname,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("db",db,PageContext.SESSION_SCOPE);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +61,24 @@ String msg=request.getParameter("msg");
         {
             padding:5px;
         }
+        .outercontainer
+        {
+            display:flex;
+            justify-content:space-evenly;
+            background-color:#038047;
+            flex-wrap: wrap;
+        }
+
+        .sub
+        {
+            text-align: center;
+            font-size: 20px;
+            background-color:#038047;
+            padding: 6px 10px;
+            margin: 5px;
+            color: white;
+            
+        }
     </style>
     <script>
         let msg="<%= msg %>";
@@ -65,9 +89,14 @@ String msg=request.getParameter("msg");
     </script>
 </head>
 <body> 
-    <center>
-        <h1><%="Batch "+tab%></h1> 
-        <h1><%=subcode+" - "+subname%></h1><hr></center>
+    <div class="outercontainer">
+        <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
+        <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
+        <div class="sub">Course Code : <%= subcode.toUpperCase()%></div>
+        <div class="sub">Course Name : <%=subname.toUpperCase()  %></div>
+    </div>
+    <hr>
+    
     <h1>Student Name List</h1>
     <div>
         <div id="form">
