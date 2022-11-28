@@ -35,7 +35,7 @@
         margin:5px;
         margin-bottom: 50px;
         float:left;
-        height: 350px;
+        height: 390px;
     }
 
     div a 

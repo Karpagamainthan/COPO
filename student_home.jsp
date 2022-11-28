@@ -42,11 +42,32 @@ String regno=(String)pageContext.getAttribute("regno",PageContext.SESSION_SCOPE)
             padding:5px;
             margin:8px ;
         }
+        .outercontainer
+    {
+        display:flex;
+        justify-content:space-evenly;
+        background-color:#038047;
+    }
+
+    .sub
+    {
+        text-align: center;
+        font-size: 20px;
+        background-color:#038047;
+        padding: 6px 10px;
+        margin: 5px;
+        color: white;
+        
+    }
     </style>
 </head>
 <body>
     <center>
-        <h1><%="Batch "+batch%></h1> <hr>
+        <div class="outercontainer">
+        <div class="sub">Department : <%= dept.toUpperCase()  %></div>
+        <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
+    </div>
+    <hr>
         
     <table border="1">
         <thead>
