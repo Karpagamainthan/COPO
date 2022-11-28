@@ -93,7 +93,7 @@ pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE);
 
             <input type="submit" value="Create Subject" name="submit">   <input type="reset" value="Reset" name="reset">
         </form>
-        <center><a href="deptbatches.jsp">Back To Batches</a></center>
+        <center><a href="po_home.jsp?tab=<%=tab%>">Back To <%=batch%></a></center>
     </div>
         <table border="1">
             <thead>

@@ -42,12 +42,12 @@
 
         .c3
         {
-            color:#083823;
+            color:red;
             width:230px;
         }
         #c4
         {
-            color:red;
+            text-align: right;
         }
         #a1
         {
@@ -91,7 +91,6 @@
                 <th>Sem</th>
                 <th id="c1">Course Code</th>
                 <th class="c2">Course Name</th>
-                <th>CO</th>
                 <th>PO1</th>
                 <th>PO2</th>
                 <th>PO3</th>
@@ -108,50 +107,63 @@
         </thead>
         <% 
         int i=1;
-        Class.forName("com.mysql.jdbc.Driver");
-        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
-        Statement st= con.createStatement();
-        String sql="select * from "+tab+" order by id";
-        ResultSet rs=st.executeQuery(sql);
-        while(rs.next())
-        {
-            String id=rs.getString("id");
-            Float a=rs.getFloat("co");
-            java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+tab+"_"+id,"root","");
+
+            java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+tab,"root","");
             Statement st1= con1.createStatement();
-            String sql1="select * from po where co=7";
+            String sql1="select * from directpo order by sem";
             ResultSet rs1=st1.executeQuery(sql1);
-            rs1.next();
+            while(rs1.next())
+            {
         %>
             <tr>
                 <td><%=i%></td>
-                <td><%=rs.getString("sem")%></td>
-                <td><%=rs.getString("subcode")%></td>
-                <td class="c3"><b><%=rs.getString("subname")%></b></td>
-                <td id="c4"><b><%=a%></b></td>
-                <% a=a/3; %>
-                <td><%= Math.round((rs1.getFloat("po1")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po2")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po3")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po4")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po5")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po6")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po7")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po8")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po9")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po10")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po11")*a)*100.0)/100.0 %></td>
-                <td><%= Math.round((rs1.getFloat("po12")*a)*100.0)/100.0 %></td>
+                <td><%=rs1.getString("sem")%></td>
+                <td><%=rs1.getString("subcode")%></td>
+                <td class="c3"><b><%=rs1.getString("subname")%></b></td>
+                <td><%= rs1.getFloat("po1")%></td>
+                <td><%= rs1.getFloat("po2")%></td>
+                <td><%= rs1.getFloat("po3")%></td>
+                <td><%= rs1.getFloat("po4")%></td>
+                <td><%= rs1.getFloat("po5")%></td>
+                <td><%= rs1.getFloat("po6")%></td>
+                <td><%= rs1.getFloat("po7")%></td>
+                <td><%= rs1.getFloat("po8")%></td>
+                <td><%= rs1.getFloat("po9")%></td>
+                <td><%= rs1.getFloat("po10")%></td>
+                <td><%= rs1.getFloat("po11")%></td>
+                <td><%= rs1.getFloat("po12")%></td>
             </tr>
         <%
         i++;
-        con1.close();
         }
         %>
         <%
-       
-            con.close();
+          con1.close();
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+tab,"root","");
+            st1= con1.createStatement();
+            sql1="select avg(po1),avg(po2),avg(po3),avg(po4),avg(po5),avg(po6),avg(po7),avg(po8),avg(po9),avg(po10),avg(po11),avg(po12) from directpo";
+            rs1=st1.executeQuery(sql1);
+            rs1.next();
+            Float arr[]=new Float[12];
+            for(int j=1;j<=12;j++)
+            {
+                arr[j-1]=(float)(Math.round(rs1.getFloat(j)*100.0)/100.0);
+            }
         %>
+        <tr>
+            <td colspan="4" id="c4"><b>Direct Attainment</b></td>
+             <% 
+                for(int j=1;j<=12;j++)
+                {
+                    sql1="update po set po"+j+"="+arr[j-1]+" where po='direct'";
+                    st1.executeUpdate(sql1);
+                    %>
+                     <td><b><%=arr[j-1]%></b></td>
+                    <%
+                }
+
+             %>
+        </tr>
     </table>
     <a id="a1" href="po_home.jsp?tab=<%=tab%>">Back To <%=tab%></a>
     </center>

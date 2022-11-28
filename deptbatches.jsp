@@ -7,8 +7,6 @@ if(request.getParameter("submit")!=null)
 {
     String dept=request.getParameter("dept");
     String batch=request.getParameter("batch");
-   
-
     pageContext.setAttribute("deptname",request.getParameter("deptname"),PageContext.SESSION_SCOPE); 
 
     String tab=dept+batch;
@@ -123,7 +121,6 @@ if(request.getParameter("submit")!=null)
             <thead>
                 <tr>
                     <th>Batches</th>
-                    <th>Program Outcomes</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -142,8 +139,7 @@ if(request.getParameter("submit")!=null)
                 String tab1=dept1+batch1;
             %>
                 <tr>
-                    <td><a href="batch.jsp?tab=<%=tab1%>"><%=batch1%></a></td>
-                    <td><a href="po_home.jsp?tab=<%=tab1%>">Program Outcomes</a></td>
+                    <td><a href="po_home.jsp?tab=<%=tab1%>"><%=batch1%></a></td>
                     <td><a href="deletebatch.jsp?id=<%=id%>&batch=<%=batch1%>" onclick="return confirm('Are you sure you want to delete the batch')">Delete</a></td>
                 </tr>
             <%

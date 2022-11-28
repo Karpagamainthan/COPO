@@ -33,9 +33,10 @@
         border:1px solid grey;
         border-radius:10px;
         margin:5px;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
         float:left;
-        height: 350px;
+        height: 300px;
+       
     }
 
     div a 
@@ -46,6 +47,7 @@
     li{
         list-style-position: inside;
         text-align:left;
+        font-size: 20px;
     }
     #back{
             color:black;
@@ -105,29 +107,18 @@
         <ul>
         <li><a href="allpomappings.jsp">PO Mappings</a></li><br>
         </ul>
-        <h2 class="cc1">PO Direct Attainment</h2>
-        <ul>
-        <li><a href="podirect.jsp">PO Direct Attainment</a></li><br>
-        </ul>
         </div>
         <div class="gal">
         <h2  class="cc1">Course Outcomes</h2>
         <ul>
         <li><a href="batch.jsp?tab=<%=tab %>">All Courses</a></li><br>
-        <li><a href="iat2.jsp">Semester 1</a></li><br>
-        <li><a href="iat3.jsp">Semester 2</a></li><br>
-        <li><a href="ass1.jsp">Semester 3</a></li><br>
-        <li><a href="ass2.jsp">Semester 4</a></li><br>
-        <li><a href="ass3.jsp">Semester 5</a></li><br>
-        <li><a href="univ.jsp">Semester 6</a></li><br>
-        <li><a href="ass3.jsp">Semester 7</a></li><br>
+        </ul>
+        <h2 class="cc1">Direct PO Attainment</h2>
+        <ul>
+        <li><a href="podirect.jsp">Direct PO Attainment</a></li><br>
         </ul>
         </div>
         <div class="gal">
-        <h2 class="cc1">Direct PO Attainment</h2>
-        <ul>
-        <li><a href="final.jsp">Direct PO Attainment</a></li><br>
-        </ul>
         <h2 class="cc1">Indirect PO Attainment</h2>
         <ul>
         <li><a href="indirectfinal.jsp">Alumni Survey</a></li><br>

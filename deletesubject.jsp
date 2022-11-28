@@ -16,6 +16,17 @@
     sql="delete from "+tab+" where id='"+id+"'";
     st.executeUpdate(sql);
     con.close();
+
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+tab,"root","");
+    st= con.createStatement();
+    sql="delete from directpo where id='"+id+"'";
+    st.executeUpdate(sql);
+
+    sql="delete from indirectpo where id='"+id+"'";
+    st.executeUpdate(sql);
+    con.close();
+
+
     response.sendRedirect("batch.jsp?tab="+tab);
 %>
 <%@ include file="footer.jsp" %> 

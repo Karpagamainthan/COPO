@@ -14,6 +14,7 @@ String sql="select co from "+tab+" where id="+id;
 ResultSet rs=st.executeQuery(sql);
 rs.next();
 float a=rs.getFloat("co");
+a=(float)(Math.round((a/3)*100.0)/100.0);
 
 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
 st= con.createStatement();
@@ -25,7 +26,7 @@ st.executeUpdate(sql);
 
 for(int i=1;i<=12;i++)
 {
-sql="update po set po"+i+"=ROUND((SELECT ((select sum(po"+i+") from po where co in (1,2,3,4,5,6))/6),2) where co in (7,8)";
+sql="update po set po"+i+"=ROUND((select sum(po"+i+") from po where co in (1,2,3,4,5,6))/6,2) where co in (7,8)";
 st.executeUpdate(sql);
 }
 
@@ -33,10 +34,22 @@ st.executeUpdate(sql);
 
 for(int i=1;i<=12;i++)
 {
-sql="update po set po"+i+"=po"+i+"*"+a+" where co=8";
+sql="update po set po"+i+"=round(po"+i+"*"+a+",2) where co=8";
 st.executeUpdate(sql);
 }
 
+sql="select * from po where co=8";
+rs=st.executeQuery(sql);
+rs.next();
+
+con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+tab,"root","");
+st= con.createStatement();
+for(int i=1;i<=12;i++)
+{
+float c=rs.getFloat("po"+i);
+sql="update directpo set po"+i+"="+c+" where id="+id;
+st.executeUpdate(sql);
+}
 
 con.close();
 response.sendRedirect("poMapping.jsp");

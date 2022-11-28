@@ -32,6 +32,11 @@
     st= con.createStatement();
     sql="drop table "+batch;
     st.executeUpdate(sql);
+
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306","root","");
+    st= con.createStatement();
+    sql="drop database "+dept+""+batch;
+    st.executeUpdate(sql);
     
     con.close();
     response.sendRedirect("deptbatches.jsp");
