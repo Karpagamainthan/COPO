@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*"%>
-<%@ page import ="javax.sql.*" %>
-<%@ page import ="java.util.*" %>
+<%@ page import="javax.sql.*" %>
+<%@ page import="java.util.*" %>
 <%@ include file="header.jsp" %>
 <%
 if(request.getParameter("submit")!=null)
