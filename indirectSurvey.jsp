@@ -70,6 +70,23 @@ String subname=arr[1];
         {
             color:red;
         }
+        .outercontainer
+    {
+        display:flex;
+        justify-content:space-evenly;
+        background-color:#038047;
+    }
+
+    .sub
+    {
+        text-align: center;
+        font-size: 20px;
+        background-color:#038047;
+        padding: 6px 10px;
+        margin: 5px;
+        color: white;
+        
+    }
        
     </style>
     <script>
@@ -87,7 +104,13 @@ String subname=arr[1];
 <body>
     <center>
 
-        <h1><%=subcode+" - "+subname%></h1><hr>
+        <div class="outercontainer">
+        <div class="sub">Department : <%= dept.toUpperCase()  %></div>
+        <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
+        <div class="sub">Course Code : <%= subcode.toUpperCase()%></div>
+        <div class="sub">Course Name : <%=subname.toUpperCase()  %></div>
+    </div>
+    <hr>
    
         <div id="form">
             

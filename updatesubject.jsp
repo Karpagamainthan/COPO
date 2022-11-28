@@ -3,6 +3,9 @@
 <%@ include file="header.jsp" %>
 <%
 String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
+String batch=tab.substring(2);
+String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
+pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE); 
 %>
 <%
 if(request.getParameter("submit")!=null)
@@ -65,9 +68,31 @@ if(request.getParameter("submit")!=null)
         {
             padding-bottom: 5%;
         }
+        .outercontainer
+    {
+        display:flex;
+        justify-content:space-evenly;
+        background-color:#038047;
+    }
+
+    .sub
+    {
+        text-align: center;
+        font-size: 20px;
+        background-color:#038047;
+        padding: 6px 10px;
+        margin: 5px;
+        color: white;
+        
+    }
     </style>
 </head>
 <body>
+    <div class="outercontainer">
+        <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
+        <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
+    </div>
+    <hr>
     <h1>Update Data</h1>
     <div id="form">
         <form method="POST" action="#">
@@ -108,7 +133,7 @@ if(request.getParameter("submit")!=null)
             %>
             <input type="submit" value="Update" name="submit">   <input type="reset" value="Reset" name="reset">
             </form>
-        <center id="main"><a href="itbatches.jsp">Back To Batches</a></center>
+        <center id="main"><a href="batch.jsp?tab=<%=tab%>">Back To Batches</a></center>
     </div>
 </body>
 </html>
