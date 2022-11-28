@@ -16,7 +16,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
     pageContext.setAttribute("subname",subname,PageContext.SESSION_SCOPE);
     pageContext.setAttribute("db",db,PageContext.SESSION_SCOPE);
 %>
-%>
 <!DOCTYPE html>
 <html lang="en">
 <head>

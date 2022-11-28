@@ -5,17 +5,13 @@
 <%
 String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
 String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
-String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
-String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
-String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
-String msg=request.getParameter("msg");
 
+String msg=request.getParameter("msg");
+    
+    String dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
     String batch=(String)pageContext.getAttribute("batch",PageContext.SESSION_SCOPE);
     String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("id",id,PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("subcode",subcode,PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("subname",subname,PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("db",db,PageContext.SESSION_SCOPE);
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,6 +76,10 @@ String msg=request.getParameter("msg");
             color: white;
             
         }
+        a:active
+        {
+            color:red;
+        }
     </style>
     <script>
         let msg="<%= msg %>";
@@ -93,21 +93,19 @@ String msg=request.getParameter("msg");
     <div class="outercontainer">
         <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
         <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
-        <div class="sub">Course Code : <%= subcode.toUpperCase()%></div>
-        <div class="sub">Course Name : <%=subname.toUpperCase()  %></div>
     </div>
     <hr>
     
     <h1>Student Name List</h1>
     <div>
         <div id="form">
-            <form method="POST" action="addExcelDetails.jsp">
+            <form method="POST" action="poaddExcelDetails.jsp">
                 <label for="location"> Enter the file location</label>
                 <input type="text" name="location" id="location" placeholder="C:new folder/filename.xls"/><br>
                 <label>*File should contain Regno,Name and Email</label>
                 <input type="submit" value="Submit" />
             </form>
-        <form method="GET" action="insertnamelist.jsp">
+        <form method="GET" action="poinsertnamelist.jsp">
             <label for="regno">Reg Number</label><br>
             <input type="text" id="regno" placeholder="Reg Number" name="regno" size="30" required><br>
             <label for="name">Student Name</label><br>
@@ -118,7 +116,7 @@ String msg=request.getParameter("msg");
             <input type="reset" value="Reset" name="reset">
         </form>
         
-        <center><a id="subname1" href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></td></center>
+        <center><a id="subname1" href="po_home.jsp?tab=<%=tab%>">Back To <%=batch%></a></td></center>
         <br>
     </div>
         <table border="1">
@@ -127,16 +125,15 @@ String msg=request.getParameter("msg");
                     <th>S.No</th>
                     <th>Reg No</th>
                     <th id="stuname">Student Name</th>
-                    <th>Edit</th>
                     <th>Delete</th>
                 </tr>
             </thead>
             <%
             int i=1;
             Class.forName("com.mysql.jdbc.Driver");
-            java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
+            java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
             Statement st= con.createStatement();
-            String sql="select * from namelist ORDER by regno";
+            String sql="select * from "+batch+" ORDER by regno";
             ResultSet rs=st.executeQuery(sql);
             while(rs.next())
             {
@@ -146,8 +143,7 @@ String msg=request.getParameter("msg");
                     <td><%=i%></td>
                     <td><%=rs.getString("regno")%></td>
                     <td id="stuname"><%=rs.getString("name")%></td>
-                    <td><a href="updatenamelist.jsp?id=<%=id1%>">Edit</a></td>
-                    <td><a href="deletenamelist.jsp?id=<%=id1%>">Delete</a></td>
+                    <td><a href="deleteponamelist.jsp?id=<%=id1%>"  onclick="return confirm('Are you sure you want to delete the student')">Delete</a></td>
                 </tr>
             <%
             i++;

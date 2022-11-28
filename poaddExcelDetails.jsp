@@ -35,16 +35,13 @@
 String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
 String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
 out.println(tab+" "+db);
-String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
-String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
-String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
+
+
 %>
 
 <%
     String location=request.getParameter("location");
     Class.forName("com.mysql.jdbc.Driver");
-    java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
-    Statement st= con.createStatement();
 
      try
      {
@@ -56,13 +53,6 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         HSSFSheet sheet = wb.getSheetAt(0);
         Row row;
         int i=1;
-        ArrayList<String> presentRegno=new ArrayList<String>();  // present regno in db add to arrayList
-        String sql="select * from namelist ORDER by regno";
-        ResultSet rs=st.executeQuery(sql);
-        while(rs.next())
-        {
-            presentRegno.add(rs.getString("regno"));
-        }
         for( i=1; i<=sheet.getLastRowNum(); i++)
         {  
             row = (Row) sheet.getRow(i);  //sheet number
@@ -104,40 +94,14 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 String sq="INSERT INTO "+batch+"(name,regno,email) VALUES('"+name+"','"+rollno+"','"+email+"')";
                 st1.executeUpdate(sq);
             }
-
-            if(!presentRegno.contains(rollno))
-            {
-                presentRegno.add(rollno);
-                String sq="INSERT INTO namelist(name,regno,email) VALUES('"+name+"','"+rollno+"','"+email+"')";
-                st.executeUpdate(sq);
-
-                String regno=rollno;
-            
-                sql1="insert into iat1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql2="insert into iat2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql3="insert into iat3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql4="insert into ass1(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql5="insert into ass2(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql6="insert into ass3(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql7="insert into univ(regno,name,co1,co2,co3,co4,co5,co6) values('"+regno+"','"+name+"',0,0,0,0,0,0)";
-                String sql8="insert into indirect(regno,name) values('"+regno+"','"+name+"')";
-            
-                st.executeUpdate(sql1);
-                st.executeUpdate(sql2);
-                st.executeUpdate(sql3);
-                st.executeUpdate(sql4);
-                st.executeUpdate(sql5);
-                st.executeUpdate(sql6);
-                st.executeUpdate(sql7);
-                st.executeUpdate(sql8);
-            }
+            con1.close();
         }
-        con.close();
-        response.sendRedirect("namelist.jsp");
+       
+        response.sendRedirect("ponamelist.jsp");
     }
     catch(Exception e)
     {
-        response.sendRedirect("namelist.jsp?msg=1");
+        response.sendRedirect("ponamelist.jsp?msg=1");
     }
 
     

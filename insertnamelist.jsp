@@ -23,8 +23,19 @@ if(request.getParameter("submit")!=null)
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
     Statement st= con.createStatement();
-    String sql="insert into "+batch+"(regno,name,email) values('"+regno+"','"+name+"','"+email+"')";
-    st.executeUpdate(sql);
+    
+        ArrayList<String> presentRegno1=new ArrayList<String>();  // present regno in db add to arrayList
+        String sql="select * from "+batch+" ORDER by regno";
+        ResultSet rs=st.executeQuery(sql);
+        while(rs.next())
+        {
+            presentRegno1.add(rs.getString("regno"));
+        }
+        if(!presentRegno1.contains(regno))
+        {
+            sql="insert into "+batch+"(regno,name,email) values('"+regno+"','"+name+"','"+email+"')";
+            st.executeUpdate(sql);
+        }
     
     con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     st= con.createStatement();

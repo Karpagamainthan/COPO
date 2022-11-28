@@ -122,9 +122,9 @@ if(request.getParameter("submit")!=null)
 
             %>
             <label for="regno">Reg Number</label><br>
-            <input type="text" id="regno" placeholder="Reg Number" value="<%=rs.getString("regno")%>" name="regno" required><br>
+            <input type="text" id="regno" placeholder="Reg Number" value="<%=rs.getString("regno")%>" name="regno" required  readonly><br>
             <label for="name">Student Name</label><br>
-            <input type="text" id="name" placeholder="Student Name" value="<%=rs.getString("name")%>" name="name" required><br><br>
+            <input type="text" id="name" placeholder="Student Name" value="<%=rs.getString("name")%>" name="name" required  readonly><br><br>
             <%
             }
             %>

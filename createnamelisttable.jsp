@@ -5,6 +5,8 @@
 <%
     String db=request.getParameter("db");
     String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
+    String batch=(String)pageContext.getAttribute("batch",PageContext.SESSION_SCOPE);
+    String dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db,"root","");
     Statement st= con.createStatement();
@@ -40,10 +42,36 @@
     st.executeUpdate(sql12);
     st.executeUpdate(sql13);
     st.executeUpdate(sql14);
-    
+
+    sql="insert into namelist(regno,name,email) select regno,name,email from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into iat1(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into iat2(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into iat3(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into ass1(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into ass2(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into ass3(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
+
+    sql="insert into univ(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
 
     String sql16="create table indirect(id int AUTO_INCREMENT primary key,regno varchar(30)  unique,name varchar(30),co1 int,co2 int,co3 int,co4 int,co5 int,co6 int,status varchar(20))";
     st.executeUpdate(sql16);
+
+    sql="insert into indirect(regno,name) select regno,name from "+dept+"."+batch;
+    st.executeUpdate(sql);
 
     sql="create table po(co int primary key,po1 float default 0,po2 float default 0,po3 float default 0,po4 float default 0,po5 float default 0,po6 float default 0,po7 float default 0,po8 float default 0,po9 float default 0,po10 float default 0,po11 float default 0,po12 float default 0)";
     st.executeUpdate(sql);

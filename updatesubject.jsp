@@ -5,6 +5,7 @@
 String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
 String batch=tab.substring(2);
 String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
+String dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
 pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE); 
 %>
 <%
@@ -14,19 +15,19 @@ if(request.getParameter("submit")!=null)
     String subcode=request.getParameter("subcode");
     String subname=request.getParameter("subname");
 
-     String co1=request.getParameter("co1");
-    String co2=request.getParameter("co2");
-    String co3=request.getParameter("co3");
-    String co4=request.getParameter("co4");
-    String co5=request.getParameter("co5");
-    String co6=request.getParameter("co6");
+     
 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st= con.createStatement();
-    String sql="update "+tab+" set sem='"+sem+"',subcode='"+subcode+"',subname='"+subname+"',co1='"+co1+"',co2='"+co2+"',co3='"+co3+"',co4='"+co4+"',co5='"+co5+"',co6='"+co6+"' where id='"+id+"'";
-
+    String sql="update "+tab+" set sem='"+sem+"',subcode='"+subcode+"',subname='"+subname+"' where id='"+id+"'";
     st.executeUpdate(sql);
+
+    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+tab,"root","");
+     st= con.createStatement();
+     sql="update directpo set sem='"+sem+"',subcode='"+subcode+"',subname='"+subname+"' where id='"+id+"'";
+    st.executeUpdate(sql);
+
     String pass="batch.jsp?tab="+tab;
     response.sendRedirect(pass); 
 }
@@ -114,18 +115,6 @@ if(request.getParameter("submit")!=null)
             <label for="subname">Subject Title</label><br>
             <input type="text" id="subname" placeholder="Subject Title" name="subname" size="30" value="<%=rs.getString("subname")%>" required><br>
 
-            <label for="co1">CO1</label><br>
-            <input type="text" id="co1" name="co1" size="30" value="<%=rs.getString("co1")%>" required> 
-            <label for="co2">CO2</label><br>
-            <input type="text" id="co2" name="co2" size="30" value="<%=rs.getString("co2")%>" required> 
-            <label for="co3">CO3</label><br>
-            <input type="text" id="co3" name="co3" size="30" value="<%=rs.getString("co3")%>" required> 
-            <label for="co4">CO4</label><br>
-            <input type="text" id="co4" name="co4" size="30" value="<%=rs.getString("co4")%>" required> 
-            <label for="co5">CO5</label><br>
-            <input type="text" id="co5" name="co5" size="30" value="<%=rs.getString("co5")%>" required> 
-            <label for="co6">CO6</label><br>
-            <input type="text" id="co6" name="co6" size="30" value="<%=rs.getString("co6")%>" required> 
 
 
             <%

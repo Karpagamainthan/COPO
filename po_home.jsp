@@ -101,7 +101,7 @@
         <div class="gal">
         <h2 class="cc1">Student Name List</h2>
         <ul>
-        <li><a href="namelist.jsp"> Student Name List</a></li><br>
+        <li><a href="ponamelist.jsp"> Student Name List</a></li><br>
         </ul>
         <h2  class="cc1">PO Mappings</h2>
         <ul>
@@ -121,13 +121,13 @@
         <div class="gal">
         <h2 class="cc1">Indirect PO Attainment</h2>
         <ul>
-        <li><a href="indirectfinal.jsp">Alumni Survey</a></li><br>
-        <li><a href="indirectfinal.jsp">Parent Survey</a></li><br>
-        <li><a href="indirectfinal.jsp">Indirect PO Attainment</a></li><br>
+        <li><a href="">Alumni Survey</a></li><br>
+        <li><a href="">Parent Survey</a></li><br>
+        <li><a href="">Indirect PO Attainment</a></li><br>
         </ul>
         <h2 class="cc1">Final PO Attainment</h2>
         <ul>
-        <li><a href="finalCo.jsp">Final PO Attainment</a></li><br>
+        <li><a href="finalpo.jsp">Final PO Attainment</a></li><br>
         </ul>
         </div>
     </div>
