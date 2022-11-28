@@ -13,6 +13,7 @@
         .flex-container {
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-around;
         }
         
         .flex-container > a {
@@ -27,10 +28,10 @@
     <h1>WELCOME</h1>
     <h2>SELECT YOUR DEPARTMENT</h2>
     <div class="flex-container">
-      <a href="deptbatches.jsp?dept=ee&deptname=Electrical and Electronics "><img src="deptEEE.jpg" alt="DEPT" width="300" height="300"></a>
-        <a href="deptbatches.jsp?dept=it&deptname=Information Technology"><img src="deptIT.jpg" alt="DEPT" width="300" height="300"></a>
-        <a href="deptbatches.jsp?dept=me&deptname=Mechanical"><img src="deptMECH.png" alt="DEPT" width="300" height="300"></a>
-        <a href="deptbatches.jsp?dept=ec&deptname=Electronics and Communication"><img src="deptECE.jpg" alt="DEPT" width="300" height="300"></a>
+        <div class="sub"><a href="deptbatches.jsp?dept=ee&deptname=Electrical and Electronics "><img src="deptEEE.jpg" alt="DEPT" width="300" height="300"></a></div>
+        <div class="sub"><a href="deptbatches.jsp?dept=it&deptname=Information Technology"><img src="deptIT.jpg" alt="DEPT" width="300" height="300"></a></div>
+        <div class="sub"><a href="deptbatches.jsp?dept=me&deptname=Mechanical"><img src="deptMECH.png" alt="DEPT" width="300" height="300"></a></div>
+        <div class="sub"><a href="deptbatches.jsp?dept=ec&deptname=Electronics and Communication"><img src="deptECE.jpg" alt="DEPT" width="300" height="300"></a></div>
       </div>
 
 </body>

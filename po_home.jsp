@@ -3,19 +3,13 @@
 <%@ page import="java.util.*" %>
 <%@ include file="header.jsp" %>
 <%
-    String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
-    String batch=(String)pageContext.getAttribute("batch",PageContext.SESSION_SCOPE);
+    String tab=request.getParameter("tab");
+    String batch=tab.substring(2);
+    pageContext.setAttribute("tab",tab,PageContext.SESSION_SCOPE);
+    pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE);
     String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
-    String id=request.getParameter("id");
-    String subname=request.getParameter("subname");
-    String subcode=request.getParameter("subcode");
-    String db=tab+"_"+id;
-
-    pageContext.setAttribute("id",id,PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("subcode",subcode,PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("subname",subname,PageContext.SESSION_SCOPE);
-    pageContext.setAttribute("db",db,PageContext.SESSION_SCOPE);
-%>
+    String dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
+%>  
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -24,12 +18,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CO PO</title>
     <style>
-        .gallary {
-            display:flex;
-        justify-content:center;
+    .gallary 
+    {
+        display:flex;
+        justify-content:space-evenly;
         flex-wrap: wrap;
-        }
-    .gal {
+    }
+
+    .gal 
+    {
         background-color: lightgrey;
         width:300px;
         padding:5px;
@@ -37,10 +34,12 @@
         border-radius:10px;
         margin:5px;
         margin-bottom: 50px;
-        
+        float:left;
         height: 350px;
     }
-    div a {
+
+    div a 
+    {
        text-decoration: none; 
        color:navy;
     }
@@ -75,7 +74,6 @@
         display:flex;
         justify-content:space-evenly;
         background-color:#038047;
-        flex-wrap: wrap;
     }
 
     .sub
@@ -94,8 +92,6 @@
     <div class="outercontainer">
         <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
         <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
-        <div class="sub">Course Code : <%= subcode.toUpperCase()%></div>
-        <div class="sub">Course Name : <%=subname.toUpperCase()  %></div>
     </div>
     <hr>
     <center>
@@ -105,44 +101,47 @@
         <ul>
         <li><a href="namelist.jsp"> Student Name List</a></li><br>
         </ul>
-        <h2 class="cc1">Course Outcomes</h2>
-        <ul>
-        <li><a href="courseoutcomes.jsp">Course Outcomes</a></li><br>
-        </ul>
         <h2  class="cc1">PO Mappings</h2>
         <ul>
-        <li><a href="poMapping.jsp">PO Mappings</a></li><br>
+        <li><a href="allpomappings.jsp">PO Mappings</a></li><br>
+        </ul>
+        <h2 class="cc1">PO Direct Attainment</h2>
+        <ul>
+        <li><a href="podirect.jsp">PO Direct Attainment</a></li><br>
         </ul>
         </div>
         <div class="gal">
-        <h2>Marksheets</h2>
+        <h2  class="cc1">Course Outcomes</h2>
         <ul>
-        <li><a href="iat1.jsp">Internal Assessment 1</a></li><br>
-        <li><a href="iat2.jsp">Internal Assessment 2</a></li><br>
-        <li><a href="iat3.jsp">Internal Assessment 3</a></li><br>
-        <li><a href="ass1.jsp">Assignment 1</a></li><br>
-        <li><a href="ass2.jsp">Assignment 2</a></li><br>
-        <li><a href="ass3.jsp">Assignment 3</a></li><br>
-        <li><a href="univ.jsp">University Exam</a></li><br>
+        <li><a href="batch.jsp?tab=<%=tab %>">All Courses</a></li><br>
+        <li><a href="iat2.jsp">Semester 1</a></li><br>
+        <li><a href="iat3.jsp">Semester 2</a></li><br>
+        <li><a href="ass1.jsp">Semester 3</a></li><br>
+        <li><a href="ass2.jsp">Semester 4</a></li><br>
+        <li><a href="ass3.jsp">Semester 5</a></li><br>
+        <li><a href="univ.jsp">Semester 6</a></li><br>
+        <li><a href="ass3.jsp">Semester 7</a></li><br>
         </ul>
         </div>
         <div class="gal">
-        <h2 class="cc1">Direct Attainment</h2>
+        <h2 class="cc1">Direct PO Attainment</h2>
         <ul>
-        <li><a href="final.jsp">Direct Attainment</a></li><br>
+        <li><a href="final.jsp">Direct PO Attainment</a></li><br>
         </ul>
-        <h2 class="cc1">Indirect Attainment</h2>
+        <h2 class="cc1">Indirect PO Attainment</h2>
         <ul>
-        <li><a href="indirectfinal.jsp">Indirect Attainment</a></li><br>
+        <li><a href="indirectfinal.jsp">Alumni Survey</a></li><br>
+        <li><a href="indirectfinal.jsp">Parent Survey</a></li><br>
+        <li><a href="indirectfinal.jsp">Indirect PO Attainment</a></li><br>
         </ul>
-        <h2 class="cc1">Final CO Attainment</h2>
+        <h2 class="cc1">Final PO Attainment</h2>
         <ul>
-        <li><a href="finalCo.jsp">Final CO Attainment</a></li><br>
+        <li><a href="finalCo.jsp">Final PO Attainment</a></li><br>
         </ul>
         </div>
     </div>
         <div id="back">
-        <a href="batch.jsp?tab=<%=tab%>"><%="Back To "+tab%></a>
+        <a href="deptbatches.jsp?dept=<%=dept%>&deptname=<%=deptname%>">Back To <%= dept.toUpperCase()%></a>
     </div>
     </center>
 </body>

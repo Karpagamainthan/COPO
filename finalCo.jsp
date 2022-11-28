@@ -69,6 +69,9 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
 
         double c1=a1+b1;
         c1=Math.round(c1*100.0)/100.0;
+
+        sql="update "+tab+" set co="+c1+" where id="+id;
+        st.executeUpdate(sql);
         con.close();
         %>
         <tr>

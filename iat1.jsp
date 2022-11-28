@@ -6,6 +6,8 @@
 <%
 String tab=(String)pageContext.getAttribute("tab",PageContext.SESSION_SCOPE);
 String db=(String)pageContext.getAttribute("db",PageContext.SESSION_SCOPE);
+String batch=(String)pageContext.getAttribute("batch",PageContext.SESSION_SCOPE);
+String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
 String subcode=(String)pageContext.getAttribute("subcode",PageContext.SESSION_SCOPE);
 String subname=(String)pageContext.getAttribute("subname",PageContext.SESSION_SCOPE);
 String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
@@ -61,12 +63,34 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
         {
             padding:5px;
         }
+
+        .outercontainer
+    {
+        display:flex;
+        justify-content:space-evenly;
+        background-color:#038047;
+    }
+
+    .sub
+    {
+        text-align: center;
+        font-size: 20px;
+        background-color:#038047;
+        padding: 6px 10px;
+        margin: 5px;
+        color: white;
+        
+    }
     </style>
 </head>
 <body>
-    <center>
-        <h1><%="Batch "+tab%></h1> 
-        <h1><%=subcode+" - "+subname%></h1><hr></center>
+    <div class="outercontainer">
+        <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
+        <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
+        <div class="sub">Course Code : <%= subcode.toUpperCase()%></div>
+        <div class="sub">Course Name : <%=subname.toUpperCase()  %></div>
+    </div>
+    <hr>
     <h1>Internal Assessment 1</h1>
     <div>
         <div id="form">
@@ -77,7 +101,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
             <input type="number" id="co1" placeholder="CO1" name="co1" size="30" min="0" max="30" required><br>
             <label for="co2">CO2 Marks</label><br>
             <input type="number" id="co2" placeholder="CO2" name="co2" size="30" min="0" max="20" required><br>
-            <input type="submit" value="Enter" name="submit">   <input type="reset" value="Reset" name="reset">
+            <input type="submit" value="Save" name="submit">   <input type="reset" value="Reset" name="reset">
         </form>
         <center><a href="subject.jsp?id=<%=id%>&subname=<%=subname%>&subcode=<%=subcode%>">Back To Course</a></center>
         <table id="benchmark">

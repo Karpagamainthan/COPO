@@ -7,12 +7,15 @@ if(request.getParameter("submit")!=null)
 {
     String dept=request.getParameter("dept");
     String batch=request.getParameter("batch");
-    pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE); 
+   
+
+    pageContext.setAttribute("deptname",request.getParameter("deptname"),PageContext.SESSION_SCOPE); 
+
     String tab=dept+batch;
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
     Statement st= con.createStatement();
-    String sql="insert into "+dept+"batches(dept,batch) values('"+dept+"','"+batch+"')";
+    String sql="insert into "+dept+"batches(dept,batch,alumni,parent,employer,direct,indirect,po) values('"+dept+"','"+batch+"',0,0,0,0,0,0)";
     st.executeUpdate(sql);
 
     java.sql.Connection con1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dept,"root","");
@@ -37,13 +40,15 @@ if(request.getParameter("submit")!=null)
         table {
             border:1px solid grey;
           border-collapse: collapse;
-          width:400px;
+          width:500px;
         }
-        td,th {
+        td,th 
+        {
             padding:10px;
+            text-align: center;
         }
         form {
-            width:250px;
+            width:300px;
             background-color: gray;
             padding:20px;
             margin-right:100px;
@@ -67,6 +72,23 @@ if(request.getParameter("submit")!=null)
         {
             padding:5px;
         }
+        .outercontainer
+    {
+        display:flex;
+        justify-content:space-evenly;
+        background-color:#038047;
+    }
+
+    .sub
+    {
+        text-align: center;
+        font-size: 20px;
+        background-color:#038047;
+        padding: 6px 10px;
+        margin: 5px;
+        color: white;
+        
+    }
         </style>
 </head>
 <body>
@@ -80,9 +102,13 @@ if(request.getParameter("submit")!=null)
     pageContext.setAttribute("deptname",deptname,PageContext.SESSION_SCOPE);
 
     dept=(String)pageContext.getAttribute("dept",PageContext.SESSION_SCOPE);
+    deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
     %>
     <div>
-        <h1>Create New Batch</h1>
+        <div class="outercontainer">
+            <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
+        </div>
+        <hr>
         <div id="form">
         <form action="#" method="post">
             <label for="dept">Department</label><br>
@@ -97,7 +123,8 @@ if(request.getParameter("submit")!=null)
             <thead>
                 <tr>
                     <th>Batches</th>
-                    <th>Delete</th>
+                    <th>Program Outcomes</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <%
@@ -116,6 +143,7 @@ if(request.getParameter("submit")!=null)
             %>
                 <tr>
                     <td><a href="batch.jsp?tab=<%=tab1%>"><%=batch1%></a></td>
+                    <td><a href="po_home.jsp?tab=<%=tab1%>">Program Outcomes</a></td>
                     <td><a href="deletebatch.jsp?id=<%=id%>&batch=<%=batch1%>" onclick="return confirm('Are you sure you want to delete the batch')">Delete</a></td>
                 </tr>
             <%

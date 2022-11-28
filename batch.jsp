@@ -4,6 +4,9 @@
 <%@ include file="header.jsp" %>
 <%
 String tab=request.getParameter("tab");
+String batch=tab.substring(2);
+String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_SCOPE);
+pageContext.setAttribute("batch",batch,PageContext.SESSION_SCOPE); 
 %>
 <!DOCTYPE html> 
 <html lang="en">
@@ -52,11 +55,32 @@ String tab=request.getParameter("tab");
             text-decoration: none;
             color:red;
         }
+
+        .outercontainer
+    {
+        display:flex;
+        justify-content:space-evenly;
+        background-color:#038047;
+    }
+
+    .sub
+    {
+        text-align: center;
+        font-size: 20px;
+        background-color:#038047;
+        padding: 6px 10px;
+        margin: 5px;
+        color: white;
+        
+    }
     </style>
 </head>
 <body>
-    <center><h1><%="Batch "+tab%></h1></center>
-    <h1>Create New Subject</h1>
+    <div class="outercontainer">
+        <div class="sub">Department : <%= deptname.toUpperCase()  %></div>
+        <div class="sub">Batch : <%= batch.toUpperCase()  %></div>
+    </div>
+    <hr>
     <div>
         <div id="form">
         <form method="GET" action="insertsubject.jsp">

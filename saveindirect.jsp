@@ -21,6 +21,17 @@ Statement st= con.createStatement();
 String sql="update indirect set co1='"+co1+"',co2='"+co2+"',co3='"+co3+"',co4='"+co4+"',co5='"+co5+"',co6='"+co6+"',status='Completed' where regno="+regno;
 st.executeUpdate(sql);
 
+sql="select avg(co1),avg(co2),avg(co3),avg(co4),avg(co5),avg(co6) from indirect";
+ResultSet rs=st.executeQuery(sql);
+rs.next();
+float avg=rs.getFloat(1)+rs.getFloat(2)+rs.getFloat(3)+rs.getFloat(4)+rs.getFloat(5)+rs.getFloat(6);
+avg=avg/6;
+
+con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
+st= con.createStatement();
+sql="update "+dept+""+batch+" set indirect="+avg+" where id="+id;
+st.executeUpdate(sql);
+
 con.close();
 response.sendRedirect("student_home.jsp");
 
