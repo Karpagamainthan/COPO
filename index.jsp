@@ -39,13 +39,18 @@
             }
             
         }
-        p{
-            margin: 20px;
+        marquee{
+            margin-top: 40px;
+            margin-left: 10px;
         }
         a
         {
-            color:red;
+            color:blue;
             text-decoration: none;
+        }
+        a:hover
+        {
+            color: brown;
         }
 
     </style>
@@ -64,8 +69,7 @@
         <button onclick="document.location='login.jsp'">ADMIN</button>
         <button onclick="document.location='login.jsp'">FACULTY</button>
         <button onclick="document.location='stud_login.jsp'">STUDENT</button>
-        <p><center><a href="alumnidetails.jsp"><b>ALUMNI SURVEY</b></a></center></p>
-        <p><center><a href="parentdetails.jsp"><b>PARENT SURVEY</a></b></center></p>
+        <marquee width="90%" direction="right" scrollamount="2"><a href="alumnidetails.jsp"><b>ALUMNI SURVEY</b></a>&nbsp&nbsp&nbsp&nbsp&nbsp</nbsp><a href="parentdetails.jsp"><b>PARENT SURVEY</a></marquee>
     </div>
 </body>
 </html>
