@@ -142,7 +142,7 @@ String id=(String)pageContext.getAttribute("id",PageContext.SESSION_SCOPE);
                 }
                 s=s+"&co6="+a+"&indirect=1";
                 document.getElementById("indirect").href=s;
-                confirm(`All the previous indirect attainments will be deleted.Are you sure?`);
+                return confirm(`All the previous indirect attainments will be deleted.Are you sure?`);
                
             
         }

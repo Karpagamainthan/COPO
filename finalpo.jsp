@@ -23,11 +23,12 @@ String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_
         table {
             border:1px solid grey;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
         td,th {
             padding:10px;
             width:50px;
+            text-align: center;
         }
         #a1{
             color:black;
@@ -36,6 +37,15 @@ String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_
             border:3px solid black;
             padding:5px;
             margin:0px 8px;
+
+        }
+        .c1
+        {
+            width: 100px;
+        }
+        #c2
+        {
+            text-align: right;
         }
         .outercontainer
     {
@@ -66,7 +76,8 @@ String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_
     <table border="1">
         <thead>
             <tr>
-                <th>Method</th>
+                <th class="c1">Method</th>
+                <th>Weightage %</th>
                 <th>PO1</th>
                 <th>PO2</th>
                 <th>PO3</th>
@@ -93,6 +104,7 @@ String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_
             %>
             <tr>
                 <td><%=rs.getString("po")%></td>
+                <td><%=rs.getString("weightage")%>%</td>
                 <td><%=rs.getFloat("PO1")%></td>
                 <td><%=rs.getFloat("PO2")%></td>
                 <td><%=rs.getFloat("PO3")%></td>
@@ -109,8 +121,23 @@ String deptname=(String)pageContext.getAttribute("deptname",PageContext.SESSION_
 
             <%
         }
-        con.close();
+        
         %>
+        <tr>
+            <td colspan="2" id="c2"><b>PO Attainment</b></td>
+            <%
+                sql="select sum(po1),sum(po2),sum(po3),sum(po4),sum(po5),sum(po6),sum(po7),sum(po8),sum(po9),sum(po10),sum(po11),sum(po12) from po";
+                rs=st.executeQuery(sql);
+                rs.next();
+                for(int i=1;i<=12;i++)
+                {
+                    %>
+                        <td><b><%=Math.round(rs.getFloat(i)*100.0)/100.0%></b></td>
+                    <%
+                }
+                con.close();
+            %>
+        </tr>
     </table>
     <a id="a1" href="po_home.jsp?tab=<%=tab%>">Back To <%=batch%></a>
     </center>

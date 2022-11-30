@@ -149,13 +149,18 @@
             {
                 arr[j-1]=(float)(Math.round(rs1.getFloat(j)*100.0)/100.0);
             }
+            sql1="select weightage from po where po='direct'";
+            rs1=st1.executeQuery(sql1);
+            rs1.next();
+            int w=rs1.getInt(1);
+            float w1=(float)(w*0.01);
         %>
         <tr>
             <td colspan="4" id="c4"><b>Direct Attainment</b></td>
              <% 
                 for(int j=1;j<=12;j++)
                 {
-                    sql1="update po set po"+j+"="+arr[j-1]+" where po='direct'";
+                    sql1="update po set po"+j+"="+Math.round((arr[j-1]*w1)*100.0)/100.0+" where po='direct'";
                     st1.executeUpdate(sql1);
                     %>
                      <td><b><%=arr[j-1]%></b></td>

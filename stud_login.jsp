@@ -20,7 +20,7 @@
         }
         #main{
             border: 2px solid navy;
-            height: 350px;
+            height: 300px;
             width: 450px;
             margin: auto;
             margin-top: 10%;
@@ -44,7 +44,6 @@
         }
         #i3{
             margin-top: 0px;
-            float: right;
             border-radius: 15px;
             height: 40px;
             width: 80px;
@@ -89,19 +88,11 @@
                 <input id="i2"  type="password" name="password" required="required" placeholder="   Password"></p>
             </div>
             <div>
-                <input id="i3" type="submit" value="Submit">
-            </div>    
+                <center><input id="i3" type="submit" value="Submit"></center>
+            </div> 
+            <hr>   
         </form>
-        
-            <div id="i4">
-                <hr>
-                <div>
-                    Don't have an account?<a href="register.jsp">Sign Up</a>
-                </div><BR>
-                <div>
-                    <a href="#">Forgot your password?</a>
-                </div>
-            </div>
+    
     </div>
 </body>
 </html>

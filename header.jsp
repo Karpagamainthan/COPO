@@ -39,6 +39,8 @@
     <div class="topnav">
      <%
   String teacher=(String)pageContext.getAttribute("teacher",PageContext.SESSION_SCOPE);
+  if(teacher==null)
+  teacher="";
   %>
         <a id="hello" href="dept_list.jsp">Home</a>
         <a id="j" href="index.jsp">LOGOUT</a>

@@ -15,7 +15,7 @@
         #i1{
             border-radius: 5%;
             border: 2px solid black;
-            height: 250px;
+            height: 350px;
             width: 250px;
             margin: auto; 
             margin-top: 10%;
@@ -29,7 +29,7 @@
             background:none;
             border-radius:5%;
             border: 2px solid none;
-             margin-top: 35px;
+            margin-top: 35px;
             margin-left: 80px;
             width:100px;
         }
@@ -39,17 +39,33 @@
             }
             
         }
+        p{
+            margin: 20px;
+        }
+        a
+        {
+            color:red;
+            text-decoration: none;
+        }
 
     </style>
+    <script>
+        let msg="<%= request.getParameter("msg") %>";
+        if(msg=="1")
+        {
+            alert("Thanks for taking survey!!!");
+        }
+    </script>
 </head>
 <body>
     <div id="i1">
-        <h1>
-            CO & PO 
-        </h1>
+        <h1>CO & PO </h1>
         <hr>
-        <button onclick="document.location='login.jsp'">DIRECT</button>
-        <button onclick="document.location='stud_login.jsp'">INDIRECT</button>
+        <button onclick="document.location='login.jsp'">ADMIN</button>
+        <button onclick="document.location='login.jsp'">FACULTY</button>
+        <button onclick="document.location='stud_login.jsp'">STUDENT</button>
+        <p><center><a href="alumnidetails.jsp"><b>ALUMNI SURVEY</b></a></center></p>
+        <p><center><a href="parentdetails.jsp"><b>PARENT SURVEY</a></b></center></p>
     </div>
 </body>
 </html>

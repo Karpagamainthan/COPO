@@ -121,9 +121,9 @@
         <div class="gal">
         <h2 class="cc1">Indirect PO Attainment</h2>
         <ul>
-        <li><a href="">Alumni Survey</a></li><br>
-        <li><a href="">Parent Survey</a></li><br>
-        <li><a href="">Indirect PO Attainment</a></li><br>
+        <li><a href="alumnisurvey.jsp">Alumni Survey</a></li><br>
+        <li><a href="parentsurvey.jsp">Parent Survey</a></li><br>
+        <li><a href="indirectpo.jsp">Indirect PO Attainment</a></li><br>
         </ul>
         <h2 class="cc1">Final PO Attainment</h2>
         <ul>

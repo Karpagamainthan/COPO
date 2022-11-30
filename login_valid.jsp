@@ -20,7 +20,12 @@ int a=0;
         } 
     }
     con.close();
-if(a==1)
+if(a==1 && teacher.equals("Admin"))
+{
+    pageContext.setAttribute("teacher",teacher,PageContext.SESSION_SCOPE);
+    response.sendRedirect("admin_home.jsp");  
+}
+else if(a==1)
 {
     pageContext.setAttribute("teacher",teacher,PageContext.SESSION_SCOPE);
     response.sendRedirect("dept_list.jsp");    

@@ -108,7 +108,7 @@ if(request.getParameter("submit")!=null)
         </div>
         <hr>
         <div id="form">
-        <form action="#" method="post">
+        <form action="createbatchtable.jsp" method="post">
             <label for="dept">Department</label><br>
             <input type="text" name="dept" id="dept" value="<%=dept%>" ><br>
             <label for="batch">Enter Batch</label><br>
