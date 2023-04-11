@@ -2,7 +2,7 @@
 <%@ include file="encryption.jsp" %>
 <%
 String email=request.getParameter("email");
-String password=request.getParameter("password");
+String password=request.getParameter("password");//Tct8OiiSXCM1SZGrW/66cg==
 int a=0;
 
     Class.forName("com.mysql.jdbc.Driver");
