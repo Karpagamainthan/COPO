@@ -2,11 +2,12 @@
 <%@ page import="javax.sql.*" %>
 <%@ page import="java.util.*"%>
 <%@ include file="header.jsp" %>
+<%@ include file="encryption.jsp" %>
 <%
     String name=request.getParameter("name");
     String department=request.getParameter("department");
     String email=request.getParameter("email");
-    String password=request.getParameter("password");
+    String password=encrypt(request.getParameter("password"),"siet");
 
     Class.forName("com.mysql.jdbc.Driver");
     java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");

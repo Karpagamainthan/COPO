@@ -4,6 +4,7 @@
 <%@ include file="header.jsp" %>
 <%
 String msg=request.getParameter("msg");
+flag=false;
 %>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@ String msg=request.getParameter("msg");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
     <title>CO PO</title>
     <style>
         table {
@@ -59,6 +61,7 @@ String msg=request.getParameter("msg");
         {
             width:60px;
             text-align: center;
+            color:black;
         }
         .outercontainer
         {
@@ -99,13 +102,17 @@ String msg=request.getParameter("msg");
            
         <form method="POST" action="insertfaculty.jsp">
             <label for="name">Name</label><br>
-            <input type="text" id="name" placeholder="Name" name="name" size="30" required><br>
+            <input type="text" id="name" placeholder="Name" name="name" size="34" required><br>
             <label for="department"> Department</label><br>
             <select required="required" name="department" id="department">
+                <option value="Admin">Admin</option>
                 <option value="Agricultural Engg">Agricultural Engg</option>
+                <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
+                <option value="Artificial Intelligence and Machine Learning">Artificial Intelligence and Machine Learning</option>
                 <option value="Biomedical Engg">Biomedical Engg</option>
                 <option value="Biotechnology">Biotechnology</option>
                 <option value="Civil Engg">Civil Engg</option>
+                <option value="Cyber Security">Cyber Security</option>
                 <option value="Computer Science and Engg">Computer Science and Engg</option>
                 <option value="Electrical and Electronics Engg">Electrical and Electronics Engg</option>
                 <option value="Electronics and Communication Engg">Electronics and Communication Engg</option>
@@ -114,14 +121,12 @@ String msg=request.getParameter("msg");
                 <option value="Mechanical Engg">Mechanical Engg </option>
               </select>
               <label for="email"> Email</label><br>
-              <input type="text" id="email" placeholder="Email" name="email" size="30" required><br>
+              <input type="text" id="email" placeholder="Email" name="email" size="34" required><br>
             <label for="pwd">Password</label><br>
-            <input type="password" id="pwd" placeholder="Password" name="password" size="30" required><br>
+            <input type="password" id="pwd" placeholder="Password" name="password" size="34" required><br>
             <input type="submit" value="Add Faculty" name="submit">  
             <input type="reset" value="Reset" name="reset">
         </form>
-        
-        <center><a id="subname1" href="index.jsp">Back</a></td></center>
         <br>
     </div>
         <table border="1">
@@ -140,7 +145,7 @@ String msg=request.getParameter("msg");
             Class.forName("com.mysql.jdbc.Driver");
             java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/co","root","");
             Statement st= con.createStatement();
-            String sql="select * from register ORDER by department";
+            String sql="select * from register ORDER by department,name";
             ResultSet rs=st.executeQuery(sql);
             while(rs.next())
             {
@@ -151,7 +156,7 @@ String msg=request.getParameter("msg");
                     <td><%=rs.getString("name")%></td>
                     <td><%=rs.getString("department")%></td>
                     <td><%=rs.getString("email")%></td>
-                    <td><%=rs.getString("password")%></td>
+                    <td style="text-align: center;"><%="*****"%></td>
                     <td class="c1"><a href="deletefaculty.jsp?id=<%=id1%>"  onclick="return confirm('Are you sure you want to delete the faculty')">Delete</a></td>
                 </tr>
             <%

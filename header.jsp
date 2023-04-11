@@ -1,3 +1,5 @@
+<%! String home="Home"; %>
+<%! boolean flag=true; %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,7 @@
   overflow: hidden;
   background-color: black;
 }
-#j{
+#rightside{
     float:right;
 }
 
@@ -24,10 +26,10 @@
   font-size: 17px;
 }
 
-#hello.hover {
+#leftside.hover {
   background-color: #ddd;
   color: black;
-}
+} 
 
 </style>
 </head>
@@ -42,11 +44,12 @@
   if(teacher==null)
   teacher="";
   %>
-        <a id="hello" href="dept_list.jsp">Home</a>
-        <a id="j" href="index.jsp">LOGOUT</a>
-        <a id="j" ><%=teacher%></a>
+        <% if(flag){ %>
+        <a id="leftside" href="dept_list.jsp">Home</a>
+        <%} %>
+        <a id="rightside" href="index.jsp">LOGOUT</a>
+        <a id="rightside" ><%=teacher%></a>
       </div>
 </header>
- 
 </body>
 </html>

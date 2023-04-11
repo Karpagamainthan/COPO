@@ -1,4 +1,5 @@
 <%@page import="java.sql.*"%>
+<%@ include file="encryption.jsp" %>
 <%
 String email=request.getParameter("email");
 String password=request.getParameter("password");
@@ -12,7 +13,8 @@ int a=0;
     ResultSet rs=st.executeQuery(sql);
     while(rs.next())
     {
-        if(rs.getString("email").equals(email)&&rs.getString("password").equals(password))
+        String pwd=rs.getString("password");
+        if(rs.getString("email").equals(email)&&decrypt(pwd,"siet").equals(password))
         {
             teacher=rs.getString("name");
             a=1;
