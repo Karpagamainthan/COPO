@@ -4,6 +4,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 <style>
     a{
         text-decoration: none;
@@ -30,6 +34,13 @@
   background-color: #ddd;
   color: black;
 } 
+.icon{
+        border-radius: 50%;
+        transition: .3s;
+      }
+      .icon:hover{
+        background-color:rgb(77, 76, 76);
+      }
 
 </style>
 </head>
@@ -44,6 +55,8 @@
   if(teacher==null)
   teacher="";
   %>
+          <a href="#" class="icon"><i class="fa-sharp fa-solid fa-arrow-left"></i></a>
+
         <% if(flag){ %>
         <a id="leftside" href="dept_list.jsp">Home</a>
         <%} %>
