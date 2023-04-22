@@ -14,45 +14,39 @@
         }
         #i1{
             border-radius: 5%;
-            border: 2px solid black;
-            height: 350px;
+            border: 2px solid yellowgreen;
+            height: auto;
             width: 250px;
             margin: auto; 
             margin-top: 10%;
-            background:greenyellow;
+            background:yellowgreen;
+            opacity:.9;
         }
         h1{
             text-align: center;
         }
+        .hr{
+            border-top:1px solid black;
+            margin-bottom:0;
+        }
         button
         {
+            font-size:1rem;
+            width:200px;
+            margin-top:20px;
+            margin-bottom:20px;
+            margin-left:25px;
+            padding:5px;
             background:none;
-            border-radius:5%;
-            border: 2px solid none;
-            margin-top: 35px;
-            margin-left: 80px;
-            width:100px;
-        }
-        @media screen and (max-width:500px) {
-            body{
-                width: auto;
-            }
-            
-        }
-        marquee{
-            margin-top: 40px;
-            margin-left: 10px;
-        }
-        a
-        {
-            color:blue;
-            text-decoration: none;
-        }
-        a:hover
-        {
-            color: brown;
+            border-radius:5px;
+            border: 1px solid black;
+            cursor:pointer;
         }
 
+        button:hover{
+            font-size:0.9rem;
+        }
+       
     </style>
     <script>
         let msg="<%= request.getParameter("msg") %>";
@@ -65,11 +59,11 @@
 <body>
     <div id="i1">
         <h1>CO & PO </h1>
-        <hr>
-        <button onclick="document.location='login.jsp'">ADMIN</button>
+        <hr Class="hr">
         <button onclick="document.location='login.jsp'">FACULTY</button>
         <button onclick="document.location='stud_login.jsp'">STUDENT</button>
-        <marquee width="90%" direction="right" scrollamount="2"><a href="alumnidetails.jsp"><b>ALUMNI SURVEY</b></a>&nbsp&nbsp&nbsp&nbsp&nbsp</nbsp><a href="parentdetails.jsp"><b>PARENT SURVEY</a></marquee>
+        <button onclick="document.location='alumnidetails.jsp'">ALUMNI SURVEY</button>
+        <button onclick="document.location='parentdetails.jsp'">PARENT SURVEY</button>
     </div>
 </body>
 </html>
